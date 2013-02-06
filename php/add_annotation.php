@@ -19,9 +19,9 @@
 	{
 		include_once 'mysql_entry.php';
 		
-		$query = "INSERT INTO annotation(start_offset, end_offset, doc_id, category, creation_author, creation_time, modification_author, modification_time) VALUES(".$start.", ".$end.", ".$id.", ".$cat.", ".$author.", NOW(), ".$author.", NOW());";
+		$query = "INSERT INTO annotation(start_offset, end_offset, doc_id, category, creation_author, creation_time, modification_author) VALUES(".$start.", ".$end.", ".$id.", ".$cat.", ".$author.", NULL, ".$author.");";
 		mysql_query($query);
-		$query = "UPDATE document SET modification_author=".$author.", modification_time=NOW() WHERE id=".$id.";";
+		$query = "UPDATE document SET modification_author=".$author." WHERE id=".$id.";";
 		mysql_query($query);
 		mysql_close();
 		echo "OK";

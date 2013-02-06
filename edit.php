@@ -19,6 +19,7 @@
 			id = <?php echo $id; ?>;
 		</script>
 		<script src="js/update_document.js"></script>
+		<script src="js/redirrect_to_catalog.js"></script>
 		<title>Text Annotation Project</title>
 	</head>
 	

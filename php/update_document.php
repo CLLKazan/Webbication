@@ -16,7 +16,7 @@
 	
 	require_once "mysql_entry.php";
 	
-	$query = "UPDATE document SET doc_text='".$text."', modification_author=".$author_id.", modification_time=NOW() WHERE id=".$id.";";
+	$query = "UPDATE document SET doc_text='".$text."', modification_author=".$author_id." WHERE id=".$id.";";
 	if ($text) mysql_query($query);
 	mysql_close();
 ?>	

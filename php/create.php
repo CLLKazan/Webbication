@@ -18,12 +18,16 @@
 	session_start();
 	$author_id = $_SESSION['user'];
 	
-	$uid = 'NEWS_MESSAGE'; //не знаю, зачем это
-	
+	$uid = 'NEWS_MESSAGE'.time(); //временно, пока не будет сделано UID
+		
 	require_once "mysql_entry.php";
 	
-	$query = "INSERT INTO document(uid, title, doc_text, creation_author, creation_time, modification_author, modification_time) VALUES('".$uid."', '".$title."', '".$text."', '".$author_id."', NOW(), '".$author_id."', NOW());";
-	if ($text) mysql_query($query);
+	$query = "INSERT INTO document(uid, title, doc_text, creation_author, creation_time, modification_author) VALUES('".$uid."', '".$title."', '".$text."', '".$author_id."', NULL, '".$author_id."');";
+	if ($text)
+	{
+		mysql_query($query);
+		echo mysql_error();
+	}
 	mysql_close();
 ?>
 	

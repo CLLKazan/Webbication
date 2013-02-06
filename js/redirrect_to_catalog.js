@@ -4,6 +4,7 @@ function redirrect_to_catalog()
 	{
 		if (this.status == 200)
 		{
+			//alert(this.responseText);
 			document.location.href = "catalog.php";
 		}
 	}
