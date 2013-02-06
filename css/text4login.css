@@ -1,0 +1,29 @@
+.login_links, h1, h2 {
+	color: rgb(106,103,96);/*color: #9b9ba3;*/
+	font-family: "Georgia";
+	height: 16;
+}
+
+.titles {
+	color: #9b9ba3;
+	font-family: "Georgia";
+	height: 14;
+}
+
+#welcome,#welcome2 {
+	font-size: 30px;
+	font-weight: 600;
+}
+
+#slogan1,#slogan2 {
+	font-size: 18px;
+	/*font-variant: small-caps;*/
+	text-align: right;
+}
+
+#submit_button {
+	color: #ffffff;
+	font-family: "Georgia", sans-serif;
+	width: 75px;
+	height: 35px;  
+}

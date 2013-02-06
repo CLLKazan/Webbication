@@ -1,59 +1,50 @@
+<!-- <!DOCTYPE html> -->
 <?php
 	require_once "php/logged_in_redirrect.php";
-?>
-<!DOCTYPE html>
+?>  
 <html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/index.css">
-		<title>Text Annotation Project</title>
-	</head>
-	
-	<body>
-		
-		<div id="wrapper">
-		
-			<div id="header">
-				<div id="header_content">
-					<div id="logo">
-						<a id="link_logo" href="#">Text Annotation</a>
-					</div>
-					
-					<div id="tools">
-						<a id="palette_button" href="#">Палитра</a>						
-					</div>
-					
-				</div>
-			</div>
-						
-			<div id="content">
-				<div id="page">
-				</div>
-			</div>
-			
-			<div id="footer">
-				<p id="project_name">KFU ITIS. 2013 (c)</p>
-			</div>
-			
-			<div id="wall">
-				<div id="window">
-					<div id="window_header">
-						<p id="window_header_title">Text Annotation</p>
-					</div>
-					<div id="form_div">
-						<form id="login" method="POST" action="php/login.php">
-							<p>Username:</p>
-							<input type="text" name="login">
-							<p>Password:</p>
-							<input type="password" name="pass"><br><br>
-							<input type="submit" value="Войти">
-						</form>
-						
-						<p>Если вы еще не прошли <a href="registration.php">регистрацию</a>, чтобы войти в систему, вам нужно ее пройти.</p>
-					</div>
-				</div>
-			</div>		
-		</div>
-	</body>
-</html>	
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/text4login.css">
+	<link rel="stylesheet" href="css/index.css">
+	<title> Вход </title>
+</head>
+<body>
+	<div id="background"></div>
+	<div id="mid">
+		<div id="mid_back">
+			<div id="mid_centered_window">
+				<!--      L   -->
 				
+				<!--    R   -->
+				<div id="mid_login_window">
+					<div id="login">
+					<form  method="POST" action="php/login.php">
+							<input type="text" name="login" id="login_place" autocomplete="off" autofocus="on" placeholder="Username">
+							<input type="password" name="pass" id="password_place" class="second_row" placeholder="Password">
+							<input type="submit" value="Sign in" id="submit_button" class="second_row">
+					</form>
+						<div id="ll">
+							<div id="reg_text"><a href="registration.php" class="login_links" id="reg_link"> Register </a></div>
+							<div id="rem_password"><a href="twitter.com" class="login_links" id="remember"> Forgot password?</a> </div>
+						</div>
+					</div>
+				</div>
+				<!--   E of R -->
+				<div id="mid_logo_window">
+						<h1 id="welcome"> Welcome to <h1>
+						<p>
+						<h1 id="welcome2"> WebbicatiOn <h1>
+						<p>
+						<h2 id="slogan1" class="titles"> Yet Another <u>One</u> Web-based</h2>
+						<p>
+						<h2 id="slogan2" class="titles"> Text Annotation Tool</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
