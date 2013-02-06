@@ -1,0 +1,351 @@
+body {
+	background: url('img/bg.png') fixed;
+	padding: 0;
+	margin: 0;
+	-moz-user-select: -moz-none !important;
+	-khtml-user-select: none !important;
+	-webkit-user-select: none !important;
+	user-select: none !important; 
+}
+
+div#header {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 50px;
+	border-bottom: 1px solid rgb(120, 120, 120);
+	-moz-border-bottom: 1px solid rgb(120, 120, 120);
+	-webkit-border-bottom: 1px solid rgb(120, 120, 120);
+	-o-border-bottom: 1px solid rgb(120, 120, 120);
+	background: -moz-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
+	background: -webkit-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
+	background: -o-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
+	background: -ms-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
+	background: linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
+	box-shadow: 0 0 20px black;
+	-moz-box-shadow: 0 0 20px black;
+	-webkit-box-shadow: 0 0 20px black;
+	-o-box-shadow: 0 0 20px black;
+}
+
+div#header_content {
+	width: 800px;
+	height: 50px;
+	overflow: visible;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#logo {
+	width: 300px;
+	position: relative;
+	float: left;
+	top: 14px;
+}
+
+a#link_logo {
+	display: block;
+	height: 50px;
+	width: 300px;
+	text-decoration: none;
+	font-family: Verdana;
+	color: #404040;
+}
+
+div#user_menu {
+	width: 500px;
+	margin-left: 300px;
+	text-align: right;
+	position: relative;
+	top: 16px;
+}
+
+p#username {
+	font-family: Verdana;
+	color: #404040;
+	font-size: 14px;
+	margin: 0;
+	float: left;
+	width: 483px;
+}
+
+a#exit_button img{
+	padding-top: 2px;
+	height: 11px;
+	width: 11px;
+}
+
+div#tools {
+	position: relative;
+	top: 45px;
+	left: 760px;
+}
+
+a#palette_button {
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: url('img/palette_button_sprite.png');
+	text-indent: -9000px;
+}
+
+a#palette_button:hover {
+	background-position-y: 40px;
+}
+
+
+/* Меняй display: block; чтобы увидеть палитру */
+div#palette {
+	display: none;
+	overflow-y: hidden;
+	max-height: 500px;
+	position: relative;
+	top: 10px;
+	width: 200px;
+}
+
+div#palette:hover {
+	overflow-y: auto;
+}
+
+td.category_color {
+	height: 15px;
+	width: 15px;
+	border: 1px solid #404040;
+	-moz-border: 1px solid #404040;
+	-webkit-border: 1px solid #404040;
+	-o-border: 1px solid #404040;
+	border-radius: 2px;
+}
+
+td.category_name {
+	font-family: Georgia;
+	font-size: 11pt;
+}
+
+div#content {
+	width: 700px;
+	margin-top: 51px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#page {
+	min-height: 1000px;
+	background: url('img/page_bg.png');
+	border: 1px solid #404040;
+	-moz-border: 1px solid #404040;
+	-webkit-border: 1px solid #404040;
+	-o-border: 1px solid #404040;
+	box-shadow: 0 0 20px black;
+	-moz-box-shadow: 0 0 20px black;
+	-webkit-box-shadow: 0 0 20px black;
+	-o-box-shadow: 0 0 20px black;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 10px;
+	padding-bottom: 100px;
+}
+
+p#title {
+	text-align: center;
+	font-family: Georgia;
+	font-size: 16pt;
+	color: #404040;
+	margin-bottom: 0px;
+}
+
+p#creation_time {
+	margin-top: 0px;
+	text-align: center;
+	font-family: Georgia;
+	font-size: 10pt;
+	color: #404040;
+	margin-bottom: 30px;
+}
+
+pre#text {
+	color: #404040;
+	font-family: Georgia;
+	white-space: pre-wrap; 
+	word-wrap: break-word;
+	-moz-user-select: text !important;
+	-khtml-user-select: text !important;
+	-webkit-user-select: text !important; 
+	user-select: text !important; 
+}
+
+span.highlighted_span {
+	border: 1px solid #AAAAAA;
+	-moz-border: 1px solid #AAAAAA;
+	-webkit-border: 1px solid #AAAAAA;
+	-o-border: 1px solid #AAAAAA;
+}
+
+span.white_text {
+	color: rgb(247, 247, 247);
+}
+
+div#footer {
+	margin-top: 20px;
+	text-align: center;
+	font-family: Georgia;
+	font-size: 11pt;
+	color: #404040;
+}
+
+/* Меняй display: block; чтобы увидеть окно сложной аннотации */
+div#wall {
+	display: none;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.75);
+}
+
+div#window {
+	overflow: hidden;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
+	top: 150px;
+	height: 400px;
+	width: 600px;
+	background: url('img/page_bg.png');
+	border: 1px groove black;
+	-moz-border: 1px groove black;
+	-webkit-border: 1px groove black;
+	-o-border: 1px groove black;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+
+div#window_header {
+	width: 100%;
+	height: 30px;
+	text-align: right;
+	background: -moz-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
+	background: -webkit-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
+	background: -o-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
+	background: -ms-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
+	background: linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
+	border-top-right-radius: 3px;
+	-moz-border-top-right-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-o-border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-top-left-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-o-border-top-left-radius: 3px;
+	border-bottom: 1px solid #404040;
+	-moz-border-bottom: 1px solid #404040;
+	-webkit-border-bottom: 1px solid #404040;
+	-o-border-bottom: 1px solid #404040;
+	box-shadow: 0 0 20px black;
+	-moz-box-shadow: 0 0 20px black;
+	-webkit-box-shadow: 0 0 20px black;
+	-o-box-shadow: 0 0 20px black;
+}
+
+div#table_div {
+	height: 369px;
+	overflow-y: auto;
+}
+
+a#close_window_button {
+	display: block;
+	padding: 7px;
+}
+
+table#complex_annotation {
+	width: 550px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
+	border-spacing: 0;
+}
+
+td.annotation {
+	text-align: center;
+	font-size: 11pt;
+	color: #404040;
+	width: 300px;
+	font-family: Georgia;
+	padding: 10px;
+	border-bottom: 1px solid #404040;
+	-moz-border-bottom: 1px solid #404040;
+	-webkit-border-bottom: 1px solid #404040;
+	-o-border-bottom: 1px solid #404040;
+}
+
+td.annotation span.invisible {
+	color: rgba(0,0,0,0.2);
+}
+
+td.edit_annotation {
+	border-bottom: 1px solid #404040;
+	-moz-border-bottom: 1px solid #404040;
+	-webkit-border-bottom: 1px solid #404040;
+	-o-border-bottom: 1px solid #404040;
+}
+
+td.edit_annotation select {
+	width: 120px;
+}
+
+td.delete_annotation {
+	width: 20px;
+	border-bottom: 1px solid #404040;
+	-moz-border-bottom: 1px solid #404040;
+	-webkit-border-bottom: 1px solid #404040;
+	-o-border-bottom: 1px solid #404040;
+}
+td.delete_annotation img{
+	width: 20px;
+	height: 20px;
+}
+
+/* Меняй display: block; чтобы увидеть меню добавления аннотаци */
+div#add_menu {
+	display: none;
+	position: fixed; /*возможно, надо fixed, посмотрим, относительно чего считает координаты window.event*/
+	width: 150px;
+	height: 50px;
+	padding: 5px;
+	border: 1px groove black;
+	-moz-border: 1px groove black;
+	-webkit-border: 1px groove black;
+	-o-border: 1px groove black;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-o-border-radius: 2px;
+	box-shadow: 0 0 10px black;
+	-moz-box-shadow: 0 0 10px black;
+	-webkit-box-shadow: 0 0 10px black;
+	-o-box-shadow: 0 0 10px black;
+	background: url('img/page_bg.png');
+}
+
+form#properties {
+	width: 120px;
+	float: left;
+}
+
+select#list_of_categories {
+	width: 120px;
+	margin-bottom: 5px;
+}
+
+form#properties input[type="submit"] {
+	width: 120px;
+}
+
+a#close_menu {
+	position: relative;
+	top: 3px;
+	left: 10px;
+}
