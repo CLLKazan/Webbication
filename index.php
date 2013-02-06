@@ -1,7 +1,12 @@
 <?php
+<<<<<<< HEAD
 	require_once "php/logged_in_redirrect.php";
 ?>
 <!DOCTYPE html>  
+=======
+	require_once ('php/logged_in_redirrect.php');
+?>  
+>>>>>>> Minor fixes
 <html>
 <head>
 	<meta charset="utf-8">
@@ -21,8 +26,8 @@
 				<div id="mid_login_window">
 					<div id="login">
 					<form  method="POST" action="php/login.php">
-							<input type="text" name="login" id="login_place" autocomplete="off" autofocus="on" placeholder="Username">
-							<input type="password" name="pass" id="password_place" class="second_row" placeholder="Password">
+							<input type="text" name="login" id="login_place" autocomplete="off" autofocus="on" placeholder="Username" maxlength="16">
+							<input type="password" name="pass" id="password_place" class="second_row" placeholder="Password" maxlength="16">
 							<input type="submit" value="Sign in" id="submit_button" class="second_row">
 					</form>
 						<div id="ll">
