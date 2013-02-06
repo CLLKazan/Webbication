@@ -1,12 +1,7 @@
 <?php
-<<<<<<< HEAD
 	require_once "php/logged_in_redirrect.php";
 ?>
 <!DOCTYPE html>  
-=======
-	require_once ('php/logged_in_redirrect.php');
-?>  
->>>>>>> Minor fixes
 <html>
 <head>
 	<meta charset="utf-8">
