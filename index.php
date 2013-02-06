@@ -1,7 +1,7 @@
-<!-- <!DOCTYPE html> -->
 <?php
 	require_once "php/logged_in_redirrect.php";
-?>  
+?>
+<!DOCTYPE html>  
 <html>
 <head>
 	<meta charset="utf-8">
