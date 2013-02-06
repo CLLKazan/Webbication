@@ -27,7 +27,7 @@
 					</form>
 						<div id="ll">
 							<div id="reg_text"><a href="registration.php" class="login_links" id="reg_link"> Register </a></div>
-							<div id="rem_password"><a href="twitter.com" class="login_links" id="remember"> Forgot password?</a> </div>
+							<div id="rem_password"><a href="http://www.twitter.com" class="login_links" id="remember"> Forgot password?</a> </div>
 						</div>
 					</div>
 				</div>

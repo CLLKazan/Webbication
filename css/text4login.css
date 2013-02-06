@@ -1,13 +1,13 @@
 .login_links, h1, h2 {
 	color: rgb(106,103,96);/*color: #9b9ba3;*/
 	font-family: "Georgia";
-	height: 16;
+	height: 16px;
 }
 
 .titles {
 	color: #9b9ba3;
 	font-family: "Georgia";
-	height: 14;
+	height: 14px;
 }
 
 #welcome,#welcome2 {

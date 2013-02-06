@@ -32,7 +32,7 @@ div#mid {
 }
 
 div#mid_centered_window {
-	background: rgb(233,233,233) transparent; /*250 ? useless*/
+	background: transparent;
 	position: absolute;
 	width: 800px;
 	margin: auto;
@@ -43,7 +43,6 @@ div#mid_centered_window {
 /* time to looooogin, i think */
 
 #login {
-
 	float: right;
 	width: 300px;
 	height: 150px;
@@ -55,7 +54,7 @@ div#mid_centered_window {
 	-moz-border-radius: 8px; 
     -webkit-border-radius: 8px; 
     -khtml-border-radius: 8px;
-    box-shadow: inset 0 0 6px rgba(64,64,64,0.4); 
+     box-shadow: inset 0 0 6px rgba(64,64,64,0.4); 
 }
 
 #login_place {
@@ -69,13 +68,14 @@ div#mid_centered_window {
 	-webkit-border-radius: 7px; 
     -khtml-border-radius: 7px;
 	background: rgb(251,251,251);
+	border-color: rgba(190,190,190,0.5);
 	clear:both;
 	font-weight: normal;
 }
 
 #login_place:focus {
 	outline: none;
-	color: rgb(190,190,190);
+	border-color: rgba(190,190,190,0.9);
 }
 
 .second_row {
@@ -86,6 +86,7 @@ div#mid_centered_window {
 
 #password_place {
 	float: left;
+	border-color: rgba(190,190,190,0.5);
 	top: 16px;
 	width: 203px;
 	height: 33px;
@@ -102,29 +103,29 @@ div#mid_centered_window {
 #password_place:focus {
 	/*border: 1px 1px 1px 1px groove threedface;*/
 	outline: none;
-	color: rgb(190,190,190);
+	border-color: rgba(190,190,190,0.9);
 }
 
 /* Magic*/
 input[type='text'], input[type='password'] {
+	border: 1px solid;
 	border-radius:5px;
 	border-style: solid;
-	color: rgba(0,0,0,0.17);
 	padding-left: 7px;
+	border-color: rgba(233,233,233,0.8);
 }
 /*    */
 
-
 #submit_button {
 	background: rgb(224,191,167) no-repeat;/*rgb(45,175,235) no-repeat;*/
-	height: 35px;
+	height: 34px;
 	border-radius: 7px;
 	-moz-border-radius: 7px; 
     -webkit-border-radius: 7px; 
     -khtml-border-radius: 7px;
 	position: relative;
 	right: -12px;
-	top: 18px;
+	top: 17px;
 	border: solid 2px rgba(64,64,64, 0.1); /*250*/
     overflow: hidden;
 	text-align: center;
@@ -155,7 +156,7 @@ input[type='text'], input[type='password'] {
 	position: absolute;
 	width: 450px;
 	height: 175px;
-	background: transparent); /*250*/
+	background: transparent; /*250*/
 }
 
 h1 {
