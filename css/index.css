@@ -32,7 +32,7 @@ div#mid {
 }
 
 div#mid_centered_window {
-	background: rgb(233,233,233); /*250 ? useless*/
+	background: rgb(233,233,233) transparent; /*250 ? useless*/
 	position: absolute;
 	width: 800px;
 	margin: auto;
@@ -60,9 +60,9 @@ div#mid_centered_window {
 
 #login_place {
 	position: relative;
-	width: 100%;
-	height: 35px;
-	top: 0px;
+	width: 97%;
+	height: 33px;
+	top: -2px;
 	left: 0px;
 	border-radius: 7px;
 	-moz-border-radius: 7px; 
@@ -75,7 +75,7 @@ div#mid_centered_window {
 
 #login_place:focus {
 	outline: none;
-	text-shadow: 0 0 #9b9ba3, 0 1px #9b9ba3, 0 0 #9b9ba3, 0 -1 #9b9ba3;
+	color: rgb(190,190,190);
 }
 
 .second_row {
@@ -85,8 +85,10 @@ div#mid_centered_window {
 }
 
 #password_place {
-	top: 20px;
-	width: 210px;
+	float: left;
+	top: 16px;
+	width: 203px;
+	height: 33px;
 	border-radius: 7px;
 	-moz-border-radius: 7px; 
     -webkit-border-radius: 7px; 
@@ -100,6 +102,7 @@ div#mid_centered_window {
 #password_place:focus {
 	/*border: 1px 1px 1px 1px groove threedface;*/
 	outline: none;
+	color: rgb(190,190,190);
 }
 
 /* Magic*/
@@ -114,13 +117,14 @@ input[type='text'], input[type='password'] {
 
 #submit_button {
 	background: rgb(224,191,167) no-repeat;/*rgb(45,175,235) no-repeat;*/
+	height: 35px;
 	border-radius: 7px;
 	-moz-border-radius: 7px; 
     -webkit-border-radius: 7px; 
     -khtml-border-radius: 7px;
 	position: relative;
 	right: -12px;
-	top: 20px;
+	top: 18px;
 	border: solid 2px rgba(64,64,64, 0.1); /*250*/
     overflow: hidden;
 	text-align: center;
@@ -141,7 +145,8 @@ input[type='text'], input[type='password'] {
 	position: relative;
 	clear: left;
 	text-align: right;
-	top: 30px;
+	top: 24px;
+	right: -3px;
 }
 
 
@@ -150,7 +155,7 @@ input[type='text'], input[type='password'] {
 	position: absolute;
 	width: 450px;
 	height: 175px;
-	background: rgb(233,233,233); /*250*/
+	background: transparent); /*250*/
 }
 
 h1 {

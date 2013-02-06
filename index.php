@@ -4,7 +4,7 @@
 <!DOCTYPE html>  
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/text4login.css">
 	<link rel="stylesheet" href="css/index.css">
@@ -21,7 +21,7 @@
 				<div id="mid_login_window">
 					<div id="login">
 					<form  method="POST" action="php/login.php">
-							<input type="text" name="login" id="login_place" autocomplete="off" autofocus="on" placeholder="Username" maxlength="16">
+							<input type="text" name="login" id="login_place" autocomplete="off" placeholder="Username" maxlength="16">
 							<input type="password" name="pass" id="password_place" class="second_row" placeholder="Password" maxlength="16">
 							<input type="submit" value="Sign in" id="submit_button" class="second_row">
 					</form>
@@ -33,15 +33,14 @@
 				</div>
 				<!--   E of R -->
 				<div id="mid_logo_window">
-						<h1 id="welcome"> Welcome to <h1>
+						<h1 id="welcome"> Welcome to </h1>
 						<p>
-						<h1 id="welcome2"> WebbicatiOn <h1>
+						<h1 id="welcome2">WebbicatiOn</h1>
 						<p>
 						<h2 id="slogan1" class="titles"> Yet Another <u>One</u> Web-based</h2>
 						<p>
 						<h2 id="slogan2" class="titles"> Text Annotation Tool</h2>
 					</div>
-				</div>
 			</div>
 		</div>
 	</div>
