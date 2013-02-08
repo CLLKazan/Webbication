@@ -4,103 +4,212 @@ body {
 	margin: 0;
 }
 
-div#header {
+.place {
+	margin-top: 10px;
+	height: 95px;
+	float: left;
+	border: 2px solid rgba(224,191,167,0.5);
+	-moz-border: 2px solid rgba(224,191,167,0.5);
+	-webkit-border: 2px solid rgba(224,191,167,0.5);
+	-o-border: 2px solid rgba(224,191,167,0.5);
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 6px 6px 6px 6px;
+}
+
+#submit_place {
+	height: 115px;
+}
+
+#submit_button {
+	background: rgb(224,191,167) no-repeat;/*rgb(45,175,235) no-repeat;*/
+	height: 34px;
+	border-radius: 7px;
+	-moz-border-radius: 7px; 
+    -webkit-border-radius: 7px; 
+    -khtml-border-radius: 7px;
+	border: solid 2px rgba(64,64,64, 0.1); /*250*/
+    overflow: hidden;
+	text-align: center;
+	line-height: 30px;
+	-webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+	font-size: 11px;
+	color: #ffffff;
+	font-family: "Georgia", sans-serif;
+	width: 130px; 
+}
+
+#submit_button:hover {
+	background: rgb(214,181,157);
+}
+
+.floating {
+	margin-top: 10px;
+}
+
+#form_name, #form_pass, #form_mail {
+	width: 250px;
+	height: 24px;
+	border-color: rgba(190,190,190,0.5);
+	border-radius: 7px;
+	-moz-border-radius: 7px; 
+    -webkit-border-radius: 7px; 
+    -khtml-border-radius: 7px;
+    -o-border-radius: 7px;
+	background: rgb(251,251,251);
+	padding-left: 4px;
+}
+
+#form_name, #form_pass, #form_mail:focus {
+	outline: none;
+}
+/*.floating {
+	float: left;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}*/
+
+#title {
+	float:right;
+	margin-top: 25px;
+	text-align: center;
+	font-family: Georgia;
+	font-size: 18pt;
+	font-weight: 500;
+	margin-bottom: 0;
+	color: rgb(106,103,96);/*color: #9b9ba3;*/
+	margin-bottom: 8px;
+}
+
+#error {
+	float: right;
+	clear: both;
+	margin-top: 0;
+	color: red;
+	text-align: right;
+	font-size: 10pt;
+	margin-bottom: 10px;
+	height: 10px;
+	width: 500px;
+	background: transparent;	
+}
+
+#link_logo {
+	color: rgb(106,103,96);/*color: #9b9ba3;*/
+	height: 16px;
+	font-weight: bold;
+	display: block;
+	text-decoration: none;
+	font-family: Verdana;
+	height: 50px;
+	width: 300px;
+}
+
+#header {
 	position: fixed;
-	top: 0px;
+	top: 0;
 	width: 100%;
 	height: 50px;
 	border-bottom: 1px solid rgb(120, 120, 120);
 	-moz-border-bottom: 1px solid rgb(120, 120, 120);
 	-webkit-border-bottom: 1px solid rgb(120, 120, 120);
 	-o-border-bottom: 1px solid rgb(120, 120, 120);
-	background: -moz-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
-	background: -webkit-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
-	background: -o-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
-	background: -ms-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
-	background: linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
-	box-shadow: 0 0 20px black;
-	-moz-box-shadow: 0 0 20px black;
-	-webkit-box-shadow: 0 0 20px black;
-	-o-box-shadow: 0 0 20px black;
+	background: -moz-linear-gradient(bottom, rgb(210,210,210), rgb(233,233,233));
+	background: -webkit-linear-gradient(bottom, rgb(210,210,210), rgb(233,233,233));
+	background: -o-linear-gradient(bottom, rgb(210,210,210), rgb(233,233,233));
+	background: -ms-linear-gradient(bottom, rgb(210,210,210), rgb(233,233,233));
+	background: linear-gradient(bottom, rgb(210,210,210), rgb(233,233,233));
+     box-shadow: 0 0 20px rgba(64,64,64,0.4);  
+	-moz-box-shadow:  0 0 20px rgba(64,64,64,0.4); 
+	-webkit-box-shadow: 0 0 20px rgba(64,64,64,0.4);
+	-o-box-shadow: 0 0 20px rgba(64,64,64,0.4); 	
+	z-index: 9999;
 }
 
-div#header_content {
+#header_content {
 	width: 800px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-div#logo {
+#logo {
 	width: 300px;
 	position: relative;
 	float: left;
 	top: 14px;
 }
 
-a#link_logo {
-	display: block;
-	height: 50px;
-	width: 300px;
-	text-decoration: none;
-	font-family: Verdana;
-	color: #404040;
-}
 
-div#content {
+#content {
 	width: 700px;
-	margin-top: 51px;
+	margin-top: 65px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-div#page {
+#page {
 	min-height: 1000px;
 	background: url('img/page_bg.png');
-	border: 1px solid #404040;
-	-moz-border: 1px solid #404040;
-	-webkit-border: 1px solid #404040;
-	-o-border: 1px solid #404040;
-	box-shadow: 0 0 20px black;
-	-moz-box-shadow: 0 0 20px black;
-	-webkit-box-shadow: 0 0 20px black;
-	-o-box-shadow: 0 0 20px black;
+	border: 1px solid rgba(0,0,0,0.7);
+	-moz-border: 1px solid rgba(0,0,0,0.7);
+	-webkit-border: 1px solid rgba(0,0,0,0.7);
+	-o-border: 1px solid rgba(0,0,0,0.7);
+	box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+	-o-box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+	margin-top: 20px;
 	padding-left: 50px;
 	padding-right: 50px;
-	padding-top: 10px;
-	padding-bottom: 100px;
+	border-radius: 5px 5px 5px 5px;
 }
 
-p#title {
-	text-align: center;
-	font-family: Georgia;
-	font-size: 16pt;
-	margin-bottom: 0px;
-	color: #404040;
-}
 
-p#error {
-	margin-top: 0px;
-	color: red;
-	text-align: center;
-	font-family: Georgia;
-	font-size: 10pt;
-	margin-bottom: 30px;
-}
-
-form#registration_form {
-	color: #404040;
-	font-family: Georgia;
-}
-
-form#registration_form input[type="text"], form#registration_form input[type="password"]{
+/*input[type='text'], input[type='password'] {
+	padding-right: 10px;
 	width: 300px;
+	height: 24px;
 	margin-top: 10px;
+	border-color: rgba(190,190,190,0.5);
+	border-radius: 7px;
+	-moz-border-radius: 7px; 
+    -webkit-border-radius: 7px; 
+    -khtml-border-radius: 7px;
+    -o-border-radius: 7px;
+	background: rgb(251,251,251);
+	font-weight: normal;
+	text-shadow: none;
 }
 
-div#footer {
-	margin-top: 20px;
+input[type='text'], input[type='password']:focus {
+	outline: none;
+	border-color: rgba(190,190,190,0.9);
+} */
+
+#footer {
+	width: 700px;
+	height: 27px;
+	padding-top: 8px;
+	background: url('img/page_bg.png');
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
 	text-align: center;
 	font-family: Georgia;
 	font-size: 11pt;
-	color: #404040;
+	/*color: #404040;*/
+	color: rgb(106,104,96);
+	border: 1px solid rgba(0,0,0,0.7);
+	-moz-border: 1px solid rgba(0,0,0,0.7);
+	-webkit-border: 1px solid rgba(0,0,0,0.7);
+	-o-border: 1px solid rgba(0,0,0,0.7);
+	box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+	-o-box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+	border-radius: 5px 5px 5px 5px;
 }
+
