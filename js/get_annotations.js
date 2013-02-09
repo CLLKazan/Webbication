@@ -12,7 +12,7 @@ function get_annotations()
 	{
 		annotations = new Array();
 	}	
-	var request = new XMLHttpRequest(); //создаем ajax переменную
+	var request = AjaxRequest(); //создаем ajax переменную
 	
 	params = "id="+id; //параметры
 	request.open("POST", "php/get_annotations.php", false); //соединяемся с сервером

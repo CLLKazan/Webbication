@@ -4,7 +4,7 @@
 
 function delete_annotation(ann_id)
 {
-	var request = new XMLHttpRequest(); //создание переменной ajax
+	var request = AjaxRequest(); //создание переменной ajax
 	
 	params = "id="+ann_id+"&doc="+id; //параметры
 	request.open("POST", "php/delete_annotation.php", false); //подключаемся к серверу

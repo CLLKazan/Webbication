@@ -4,7 +4,7 @@
 
 function get_document()
 {
-	var request = new XMLHttpRequest(); //ajax переменная
+	var request = AjaxRequest(); //ajax переменная
 	
 	params = "id="+id; //параметры
 	request.open("POST", "php/get_document.php", false); //соединяемся с сервером

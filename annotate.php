@@ -18,6 +18,7 @@
 		<script>
 			id = <?php echo $id; ?>;
 		</script>
+		<script src="js/ajax.js"></script>
 		<script src="js/global_variables.js"></script>
 		<script src="js/delete_annotation.js"></script>
 		<script src="js/get_annotations.js"></script>

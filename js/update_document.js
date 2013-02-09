@@ -7,7 +7,7 @@ function update_document()
 	var text_textarea = document.getElementById("text");
 	var text = text_textarea.value; //получаем отредактированный текст документа
 	
-	var request = new XMLHttpRequest();//ajax переменная
+	var request = AjaxRequest();//ajax переменная
 	
 	params = "id="+id+"&text="+text; //параметры
 	request.open("POST", "php/update_document.php", false); //соединяемся с сервером

@@ -17,7 +17,7 @@ function re_annotate()
 			}
 			if (document.getElementById('wall').style.display == "block") //если открыто окно сложных аннотаций, обновляем его содержимое
 			{
-				show_complex_annotation(point1);
+				show_complex_annotation(selection_point1);
 			}
 			if (this.responseText == null)
 			{

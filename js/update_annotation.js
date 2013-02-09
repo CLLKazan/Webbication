@@ -17,7 +17,7 @@ function update_annotation(ann) //параметр ann - id аннотации
 		alert("Выберите категорию!");
 	}
 	
-	var request = new XMLHttpRequest(); //ajax переменная
+	var request = AjaxRequest(); //ajax переменная
 	
 	params = "id="+id+"&ann_id="+ann+"&cat="+cat; //параметры
 	request.open("POST", "php/update_annotation.php", false); //соединяемся с сервером

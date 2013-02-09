@@ -32,7 +32,7 @@ function add_annotation()
 		return;
 	}
 	
-	var request = new XMLHttpRequest(); //создаем переменную Ajax
+	var request = AjaxRequest(); //создаем переменную Ajax
 	
 	params = "id="+id+"&start="+start+"&end="+end+"&cat="+cat; //подготовливаем параметры
 	request.open("POST", "php/add_annotation.php", false); //соединяемся с php скриптом
