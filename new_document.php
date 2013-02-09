@@ -9,7 +9,7 @@
 		<script src="js/save_document.js"></script>
 		<script src="js/redirrect_to_catalog.js"></script>
 		<script src="js/ajax.js"></script>
-		<title>Text Annotation Project</title>
+		<title>New Document</title>
 	</head>
 	
 	<body>
@@ -19,7 +19,7 @@
 			<div id="header">
 				<div id="header_content">
 					<div id="logo">
-						<a id="link_logo" href="index.php">Text Annotation</a>
+						<a id="link_logo" href="index.php">WebbicatiOn</a>
 					</div>
 					<div id="user_menu">
 						<p id="username"><?php echo $_SESSION['username']; ?></p>

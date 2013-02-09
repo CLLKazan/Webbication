@@ -5,8 +5,10 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/textMain.css">
 		<link rel="stylesheet" type="text/css" href="css/catalog.css">
-		<title>Text Annotation Project</title>
+		<title>Catalogue</title>
 	</head>
 	
 	<body>
@@ -16,7 +18,7 @@
 			<div id="header">
 				<div id="header_content">
 					<div id="logo">
-						<a id="link_logo" href="index.php">Text Annotation</a>
+						<a id="link_logo" href="index.php">WebbicatiOn</a>
 					</div>
 					<div id="user_menu">
 						<p id="username"><?php echo $_SESSION['username']; ?></p>
