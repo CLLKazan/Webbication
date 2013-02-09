@@ -130,6 +130,11 @@ td.document_title a {
 	color: #404040;
 }
 
+span.uid {
+	color: #A0A0A0;
+	font-size: 8pt;
+}
+
 td.author {
 	padding: 5px;
 	width: 80px;

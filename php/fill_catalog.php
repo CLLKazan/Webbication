@@ -21,7 +21,7 @@
 	$row = mysql_fetch_row($result);
 	$limit = $row[0];
 	
-	$query = "SELECT id, title, creation_author, creation_time, modification_author, modification_time FROM document ORDER BY modification_time DESC LIMIT ".(($page-1)*20).", 20;";
+	$query = "SELECT id, title, creation_author, creation_time, modification_author, modification_time, uid FROM document ORDER BY modification_time DESC LIMIT ".(($page-1)*20).", 20;";
 	$result = mysql_query($query);
 	
 	$rows = mysql_num_rows($result);
@@ -42,7 +42,7 @@
 		$modification_author = mysql_fetch_row($subres);
 
 		echo "<tr>";
-		echo "<td class='document_title'><a href='annotate.php?id=".$row[0]."'>".$row[1]."</a></td>";
+		echo "<td class='document_title'><a href='annotate.php?id=".$row[0]."'>".$row[1]."</a><br><span class='uid'>".$row[6]."</span></td>";
 		
 		echo "<td class='author'>";
 			echo "<p class='authors_name'>".$creation_author[0]."</p>";
