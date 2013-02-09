@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/new_document.css">
 		<script src="js/save_document.js"></script>
 		<script src="js/redirrect_to_catalog.js"></script>
+		<script src="js/ajax.js"></script>
 		<title>Text Annotation Project</title>
 	</head>
 	
@@ -35,6 +36,7 @@
 			<div id="content">
 				<div id="page">
 					<textarea placeholder="Title" id="title"></textarea>
+					<textarea placeholder="UID" id="uid"></textarea>
 					<textarea placeholder="Text" id="text"></textarea>
 				</div>
 			</div>

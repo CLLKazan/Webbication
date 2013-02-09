@@ -113,7 +113,6 @@ div#page {
 
 textarea#title {
 	margin-top: 20px;
-	margin-bottom: 20px;
 	background: transparent;
 	font-family: Georgia;
 	font-size: 16pt;
@@ -121,6 +120,29 @@ textarea#title {
 	text-align: center;
 	width: 100%;
 	height: 36pt;
+	border: 1px solid rgba(0,0,0,0.1);
+	-moz-border: 1px solid rgba(0,0,0,0.1);
+	-webkit-border: 1px solid rgba(0,0,0,0.1);
+	-o-border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
+textarea#uid {
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	background: transparent;
+	font-family: Georgia;
+	font-size: 12pt;
+	color: #404040;
+	text-align: center;
+	width: 250px;
+	margin-right: auto;
+	margin-left: auto;
+	height: 15pt;
 	border: 1px solid rgba(0,0,0,0.1);
 	-moz-border: 1px solid rgba(0,0,0,0.1);
 	-webkit-border: 1px solid rgba(0,0,0,0.1);
