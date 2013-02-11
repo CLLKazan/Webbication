@@ -20,6 +20,11 @@ function show_complex_annotation(pos)
 			k++;
 		}
 	}
+	if (k == 0) //если не осталось аннотаций в данной точке, закрываем окно
+	{
+		wall.style.display = "none";
+		return;
+	}
 	var table = document.getElementById("complex_annotation"); //получаем дескриптор таблицы сложных аннотаций
 	var result = "<tr><td class='annotation'>"+get_complex_annotation(min, max)+"</td><td class='edit_annotation'></td><td class='delete_annotation'></td></tr>"; //верхняя строка таблицы
 	for (var i = 0; i < k; i++)
