@@ -21,10 +21,10 @@
 		
 		$query = "INSERT INTO annotation(start_offset, end_offset, doc_id, category, creation_author, creation_time, modification_author) VALUES(".$start.", ".$end.", ".$id.", ".$cat.", ".$author.", NULL, ".$author.");";
 		mysql_query($query);
-		$query = "UPDATE document SET modification_author=".$author." WHERE id=".$id.";";
+		$query = "UPDATE document SET modification_author=".$author.", modification_time=NOW() WHERE id=".$id.";";
 		mysql_query($query);
+		echo $query;
 		mysql_close();
 		echo "OK";
 	}
-	//header("Location: ../annotate.php?id=".$id."&edit=on"); //загружаем страницу аннотирования в режиме добавления аннотаций, ведь во время вызова этого скрипта она была именно в этом режиме
 ?>
