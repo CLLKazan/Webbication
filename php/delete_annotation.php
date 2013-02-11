@@ -17,7 +17,7 @@
 	
 	$query = "DELETE FROM annotation WHERE id=".$id.";";
 	mysql_query($query);
-	$query = "UPDATE document SET modification_author=".$author." WHERE id=".$doc_id.";";
+	$query = "UPDATE document SET modification_author=".$author.", modification_time=NOW() WHERE id=".$doc_id.";";
 	mysql_query($query);
 	mysql_close();
 ?>
