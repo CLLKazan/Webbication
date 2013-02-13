@@ -17,6 +17,7 @@ div#header {
 	-moz-border-bottom: 1px solid rgb(120, 120, 120);
 	-webkit-border-bottom: 1px solid rgb(120, 120, 120);
 	-o-border-bottom: 1px solid rgb(120, 120, 120);
+	background: rgb(233,233,233);
 	background: -moz-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
 	background: -webkit-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
 	background: -o-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
@@ -73,6 +74,7 @@ a#exit_button img{
 	padding-top: 2px;
 	height: 11px;
 	width: 11px;
+	border: none;
 }
 
 div#tools {
@@ -227,6 +229,7 @@ div#window_header {
 	width: 100%;
 	height: 30px;
 	text-align: right;
+	background: rgb(184, 184, 184);
 	background: -moz-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
 	background: -webkit-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
 	background: -o-linear-gradient(bottom, rgb(184, 184, 184), rgb(228, 228, 228));
@@ -258,6 +261,7 @@ div#table_div {
 a#close_window_button {
 	display: block;
 	padding: 7px;
+	border: none !important;
 }
 
 table#complex_annotation {
@@ -348,4 +352,5 @@ a#close_menu {
 	position: relative;
 	top: 3px;
 	left: 10px;
+	border: none;
 }

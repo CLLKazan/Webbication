@@ -116,6 +116,7 @@ body {
 	-moz-border-bottom: 1px solid rgb(120, 120, 120);
 	-webkit-border-bottom: 1px solid rgb(120, 120, 120);
 	-o-border-bottom: 1px solid rgb(120, 120, 120);
+	background: rgb(233,233,233);
 	background: -moz-linear-gradient(bottom, rgb(210,210,210), rgb(233,233,233));
 	background: -webkit-linear-gradient(bottom, rgb(210,210,210), rgb(233,233,233));
 	background: -o-linear-gradient(bottom, rgb(210,210,210), rgb(233,233,233));

@@ -7,7 +7,7 @@
 	$query = "SELECT id, hash, username FROM USER  WHERE username='".$login."' AND pass='".$pass."';";	
 	$result = mysql_query($query);
 	$row = mysql_fetch_row($result);
-	mysql_close($db_database);
+	mysql_close();
 	
 	if (!$row[0] || strcmp($row[1], "allow") != 0)
 	{
