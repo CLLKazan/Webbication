@@ -15,6 +15,8 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="css/annotate.css">
+		<script src="js/jquery.js"></script>
+		<script src="js/text_range.js"></script>
 		<script>
 			id = <?php echo $id; ?>;
 		</script>
@@ -47,8 +49,6 @@
 		<script src="js/fill.js"></script>
 		<script src="js/fill_categories.js"></script>
 		<script src="js/fill_palette.js"></script>
-		<script src="js/jquery.js"></script>
-		<script src="js/text_range.js"></script>
 		<title>Text Annotation Project</title>
 	</head>
 	
@@ -67,9 +67,9 @@
 					</div>
 					
 					<div id="tools">
-						<a id="palette_button" href="javascript: $('#palette').slideToggle('fast', 'swing');">Палитра</a>
+						<a id="palette_button" onclick="javascript: $('#palette').slideToggle('fast', 'swing');">Палитра</a>
 						
-						<div id="palette" style="display: none;">
+						<div id="palette">
 						</div>
 					</div>
 					
