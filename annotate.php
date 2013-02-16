@@ -99,15 +99,6 @@
 					</div>
 				</div>
 			</div>
-			
-			<div id="add_menu" style="display: none;">
-				<form id="properties" action="javascript: add_annotation();">
-					<select id="list_of_categories">
-					</select>
-					<input type="submit" value="Добавить">
-				</form>
-				<a id="close_menu" href="javascript: close_menu();"><img src="css/img/exit_button.png"></a>
-			</div>
 
 		</div>
 	</body>
