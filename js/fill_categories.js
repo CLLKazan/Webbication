@@ -2,15 +2,23 @@
 	Эта функция заполняет блок select списком категорий. Опционально какая-то категория выбрана по умолчанию.
 */
 
-function fill_categories(ObjSel, cat) //ObjSel - объект выделения, cat - id категории, которую нужно сделать выбранной по умолчанию
+function fill_categories(ObjSel, cat) //ObjSel - объект selection, cat - id категории, которую нужно сделать выбранной по умолчанию
 {
-	var result = "";
+	var $sel = $(ObjSel);
+	$sel.children().remove();
 	if (!cat) //если не присутствует параметр cat
 	{
-		result = "<option value='0' selected>Выберите аннотацию</option>";
+		var $option = $(document.createElement("option"));
+		$sel.append($option);
+		$option.attr("value", "0");
+		$option.prop("selected", "selected");
+		$option.text("Выберите категорию");
 		for (var i = 0; i < count_of_categories; i++)
 		{
-			result += "<option value='"+categories[i]['id']+"'>"+categories[i]['name']+"</option>";
+			$option = $(document.createElement("option"));
+			$sel.append($option);
+			$option.attr("value", categories[i]['id']);
+			$option.text(categories[i]['name']);
 		}
 	}
 	else //если присутствует параметр cat
@@ -23,11 +31,19 @@ function fill_categories(ObjSel, cat) //ObjSel - объект выделения
 				name = categories[i]['name'];
 			}
 		}
-		result = "<option value='"+cat+"' selected>"+name+"</option>";
+		var $option = $(document.createElement("option"));
+		$sel.append($option);
+		$option.append("value", cat);
+		$option.text(name);
+		$option.prop("selected", "selected");
 		for (var i = 0; i < count_of_categories; i++)
 		{
-			if (categories[i]['id'] != cat) result += "<option value='"+categories[i]['id']+"'>"+categories[i]['name']+"</option>";
+			if (categories[i]['id'] != cat) {
+				$option = $(document.createElement("option"));
+				$sel.append($option);
+				$option.attr("value", categories[i]['id']);
+				$option.text(categories[i]['name']); 
+			}
 		}
 	}
-	ObjSel.innerHTML = result;
 }
