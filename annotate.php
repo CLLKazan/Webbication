@@ -44,7 +44,6 @@
 		<script src="js/show_add_menu.js"></script>
 		<script src="js/close_menu.js"></script>
 		<script src="js/update_annotation.js"></script>
-		<script src="js/show_palette.js"></script>
 		<script src="js/fill.js"></script>
 		<script src="js/fill_categories.js"></script>
 		<script src="js/fill_palette.js"></script>
@@ -67,7 +66,7 @@
 					</div>
 					
 					<div id="tools">
-						<a id="palette_button" href="javascript: show_palette();">Палитра</a>
+						<a id="palette_button" href="javascript: $('#palette').slideToggle('fast', 'swing');">Палитра</a>
 						
 						<div id="palette" style="display: none;">
 						</div>
