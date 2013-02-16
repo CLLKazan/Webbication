@@ -4,15 +4,18 @@
 
 function fill_palette()
 {
-	var palette = document.getElementById("palette");
-	var html = "<table>"; //создаем таблицу
-	for (var i = 0; i < count_of_categories; i++)
-	{
-		html += "<tr>";
-		html += "<td class='category_color' bgcolor='#"+Number(categories[i]['r']).toString(16)+Number(categories[i]['g']).toString(16)+Number(categories[i]['b']).toString(16)+"'></td>"; //ячейка таблицы с фоном, соответствующим категории
-		html += "<td class='category_name'>"+categories[i]['name']+"</td>";
-		html += "</tr>";
+	var table = $(document.createElement("table"));
+	$("#palette").append(table);
+	for (var i = 0; i < count_of_categories; i++) {
+		var tr = $(document.createElement("tr")); //создаем строку таблицы
+		table.append(tr); //добавляем ее в таблицу
+		var td = $(document.createElement("td")); //создаем ячейку
+		tr.append(td); //кидаем ее в строку таблицы
+		td.addClass("category_color"); //добавляем класс
+		td.css("background-color", GetColor(categories[i]['r'], categories[i]['g'], categories[i]['b'])); //определяем цвет для нее
+		td = $(document.createElement("td")); //создаем еще одну ячейку
+		tr.append(td); //добавляем в строку
+		td.addClass("category_name"); //добавляем ей класс
+		td.text(categories[i]['name']); //записываем в ячейку текст
 	}
-	html += "</table>";
-	palette.innerHTML = html; //заполняем
 }
