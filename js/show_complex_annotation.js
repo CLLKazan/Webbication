@@ -35,7 +35,7 @@ function show_complex_annotation(pos)
 		result += "<td class='delete_annotation'><a class='delete_button' href='javascript: delete_annotation("+childs[i]['id'] +");'><img src='css/img/delete_annotation.png'></a></td>"; //кнопка удаления аннотации
 		result += "</tr>";
 	}
-	table.innerHTML = result; //заполняем таблицу
+	$(table).html(result); //заполняем таблицу
 	for (var i = 0; i < k; i++)
 	{
 		fill_categories(document.getElementById("sel_"+childs[i]['id']), childs[i]['cat_id']); //заполняем блоки selection списками категорий

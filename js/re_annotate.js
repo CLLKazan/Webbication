@@ -10,9 +10,11 @@ function re_annotate()
 		{
 			get_annotations(); //получаем из базы все аннотации, связанные с текстом
 			annotate(text, points, count_of_points); //аннотируем текст
-			if (document.getElementById('add_menu').style.display == "block") //если меню добавления аннотации все еще видно, закрываем
+			if ($("#add_menu")) //если меню добавления аннотации все еще видно, закрываем
 			{
-				close_menu();
+				$("#add_menu").fadeOut("fast", "swing", function () {
+					$("#add_menu").remove();
+				});
 			}
 			if (document.getElementById('wall').style.display == "block") //если открыто окно сложных аннотаций, обновляем его содержимое
 			{

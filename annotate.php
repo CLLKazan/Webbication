@@ -44,7 +44,6 @@
 		<script src="js/highlight_annotation.js"></script>
 		<script src="js/get_complex_annotation.js"></script>
 		<script src="js/show_add_menu.js"></script>
-		<script src="js/close_menu.js"></script>
 		<script src="js/update_annotation.js"></script>
 		<script src="js/fill.js"></script>
 		<script src="js/fill_categories.js"></script>

@@ -17,7 +17,7 @@ function annotate(txt, points, count_of_points)
 	$text.append($span);
 	var str = 'map_0'; //id первого span'a
 	$span.attr("id", str);//открывающий span
-	$span.click(function(event) {
+	$span.mouseup(function(event) {
 		show_options(event);
 	});
 	$span.css("background-color", "transparent");
@@ -36,7 +36,7 @@ function annotate(txt, points, count_of_points)
 			{
 				$span = $(document.createElement("span"));
 				$text.append($span);
-				$span.click(function(event) {
+				$span.mouseup(function(event) {
 					show_options(event);
 				});
 				if (cat != '') //добавляем в список название категории
@@ -72,7 +72,7 @@ function annotate(txt, points, count_of_points)
 			{
 				$span = $(document.createElement("span"));
 				$text.append($span);
-				$span.click(function(event) {
+				$span.mouseup(function(event) {
 					show_options(event);
 				});
 				cat = delete_cat(cat, points[j]['category']); //удаляем из списка лишнюю категорию
