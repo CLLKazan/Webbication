@@ -48,6 +48,7 @@
 		<script src="js/fill_categories.js"></script>
 		<script src="js/fill_palette.js"></script>
 		<script src="js/jquery.js"></script>
+		<script src="js/text_range.js"></script>
 		<title>Text Annotation Project</title>
 	</head>
 	
