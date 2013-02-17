@@ -88,19 +88,6 @@
 			<div id="footer">
 				<p id="project_name">KFU ITIS. 2013 (c)</p>
 			</div>
-			
-			<!--<div id="wall" style="display: none;">
-				<div id="window">
-					<div id="window_header">
-						<a id="close_window_button" href="javascript: close_window();"><img src="css/img/exit_button.png"></a>
-					</div>
-					<div id="table_div">
-						<table id="complex_annotation">
-						</table>
-					</div>
-				</div>
-			</div>-->
-
 		</div>
 	</body>
 </html>	
