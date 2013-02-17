@@ -196,12 +196,12 @@ div#footer {
 
 /* Меняй display: block; чтобы увидеть окно сложной аннотации */
 div#wall {
-	display: none;
+	display: block;
 	position: fixed;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(0,0,0,0.75);
+	background: rgba(0,0,0,0);
 }
 
 div#window {
@@ -221,6 +221,10 @@ div#window {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-o-border-radius: 3px;
+	box-shadow: 0 0 20px black;
+	-moz-box-shadow: 0 0 20px black;
+	-webkit-box-shadow: 0 0 20px black;
+	-o-box-shadow: 0 0 20px black;
 }
 
 div#window_header {
@@ -244,10 +248,10 @@ div#window_header {
 	-moz-border-bottom: 1px solid #404040;
 	-webkit-border-bottom: 1px solid #404040;
 	-o-border-bottom: 1px solid #404040;
-	box-shadow: 0 0 20px black;
+	/*box-shadow: 0 0 20px black;
 	-moz-box-shadow: 0 0 20px black;
 	-webkit-box-shadow: 0 0 20px black;
-	-o-box-shadow: 0 0 20px black;
+	-o-box-shadow: 0 0 20px black;*/
 }
 
 div#table_div {

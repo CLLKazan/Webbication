@@ -48,6 +48,7 @@
 		<script src="js/fill.js"></script>
 		<script src="js/fill_categories.js"></script>
 		<script src="js/fill_palette.js"></script>
+		<script src="js/fill_window.js"></script>
 		<title>Text Annotation Project</title>
 	</head>
 	
@@ -88,7 +89,7 @@
 				<p id="project_name">KFU ITIS. 2013 (c)</p>
 			</div>
 			
-			<div id="wall" style="display: none;">
+			<!--<div id="wall" style="display: none;">
 				<div id="window">
 					<div id="window_header">
 						<a id="close_window_button" href="javascript: close_window();"><img src="css/img/exit_button.png"></a>
@@ -98,7 +99,7 @@
 						</table>
 					</div>
 				</div>
-			</div>
+			</div>-->
 
 		</div>
 	</body>

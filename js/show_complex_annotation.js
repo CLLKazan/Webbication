@@ -4,41 +4,47 @@
 
 function show_complex_annotation(pos)
 {
-	var wall = document.getElementById("wall"); //получаем дискриптор блока div#wall (темный фон, закрывающий все окно браузера)
-	wall.style.display = "block"; //делаем его видимым
-	var childs = new Array(); //здесь будут храниться побочные аннотации, которые расположены в позиции, на которую указывает курсор (pos)
-	var k = 0; //кол-во побочных аннотаций
-	var min = 1000000000; //инициализация
-	var max = -1000000000;
-	for (var i = 0; i < count_of_points/2; i++)
-	{
-		if (annotations[i]['start'] <= pos && annotations[i]['end'] >= pos) //если pos находится между концом и началом аннотации
-		{
-			if (annotations[i]['start'] < min) min = annotations[i]['start']; //запоминаем самую левую точку
-			if (annotations[i]['end'] > max) max = annotations[i]['end']; //запоминаем самую правую точку
-			childs[k] = annotations[i]; //добавляем аннотацию в побочные
-			k++;
-		}
-	}
-	if (k == 0) //если не осталось аннотаций в данной точке, закрываем окно
-	{
-		wall.style.display = "none";
-		return;
-	}
-	var table = document.getElementById("complex_annotation"); //получаем дескриптор таблицы сложных аннотаций
-	var result = "<tr><td class='annotation'>"+get_complex_annotation(min, max)+"</td><td class='edit_annotation'></td><td class='delete_annotation'></td></tr>"; //верхняя строка таблицы
-	for (var i = 0; i < k; i++)
-	{
-		result += "<tr>";
-		result += "<td class='annotation'>"+highlight_annotation(childs[i], min, max)+"</td>";
-		result += "<td class='edit_annotation'>"+"<form action='javascript: update_annotation("+childs[i]['id']+");'><select id='sel_"+childs[i]['id']+"'></select><input type='submit' value='Обновить'></form>"+"</td>"; //форма редактирования типа аннотации
-		result += "<td class='delete_annotation'><a class='delete_button' href='javascript: delete_annotation("+childs[i]['id'] +");'><img src='css/img/delete_annotation.png'></a></td>"; //кнопка удаления аннотации
-		result += "</tr>";
-	}
-	$(table).html(result); //заполняем таблицу
-	for (var i = 0; i < k; i++)
-	{
-		fill_categories(document.getElementById("sel_"+childs[i]['id']), childs[i]['cat_id']); //заполняем блоки selection списками категорий
-	}
+	var $wall = $(document.createElement("div"));
+	$("body").append($wall);
+	$wall.attr("id", "wall");
+	$wall.click(function(event) {
+		$("#window").fadeToggle(50, "swing", function () {
+			$("#wall").remove();
+		});
+	});
+	
+	var $window = $(document.createElement("div"));
+	$wall.append($window);
+	$window.attr("id", "window");
+	$window.css("opacity", "0");
+	$window.click(function(event) {
+		event.stopPropagation();
+	});
+	
+	var $window_header = $(document.createElement("div"));
+	$window.append($window_header);
+	$window_header.attr("id", "window_header");
+	
+	var $close_window_button = $(document.createElement("a"));
+	$window_header.append($close_window_button);
+	$close_window_button.attr("id", "close_window_button");
+	$close_window_button.append("<img src='css/img/exit_button.png'>");
+	$close_window_button.children().click(function(event) {
+		$("#window").fadeToggle(50, "swing", function () {
+			$("#wall").remove();
+		});
+	});
+	
+	var $table_div = $(document.createElement("div"));
+	$window.append($table_div);
+	$table_div.attr("id", "table_div");
+	
+	var $table = $(document.createElement("table"));
+	$table_div.append($table);
+	$table.attr("id", "complex_annotation");
+	
+	fill_window(pos);
+	
+	$window.fadeTo(50, 1, "swing");
 }
 

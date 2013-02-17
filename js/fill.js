@@ -11,4 +11,7 @@ function fill()
 	$("#title").text(title); //заполняем заголовок
 	$("#creation_time").text(date); //заполняем время создания
 	annotate(text, points, count_of_points); //заполняем текст аннотациями и выводим его на страницу
+	$("#text").on("mouseup", "span", function(event) {
+		show_options(event);
+	});
 }

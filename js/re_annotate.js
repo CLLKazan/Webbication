@@ -12,13 +12,13 @@ function re_annotate()
 			annotate(text, points, count_of_points); //аннотируем текст
 			if ($("#add_menu")) //если меню добавления аннотации все еще видно, закрываем
 			{
-				$("#add_menu").fadeOut("fast", "swing", function () {
+				$("#add_menu").fadeOut(50, "swing", function () {
 					$("#add_menu").remove();
 				});
 			}
-			if (document.getElementById('wall').style.display == "block") //если открыто окно сложных аннотаций, обновляем его содержимое
+			if ($("#wall")) //если открыто окно сложных аннотаций, обновляем его содержимое
 			{
-				show_complex_annotation(selection_point1);
+				fill_window(selection_point1);
 			}
 			if (this.responseText == null)
 			{

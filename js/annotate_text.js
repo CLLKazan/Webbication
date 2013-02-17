@@ -17,9 +17,9 @@ function annotate(txt, points, count_of_points)
 	$text.append($span);
 	var str = 'map_0'; //id первого span'a
 	$span.attr("id", str);//открывающий span
-	$span.mouseup(function(event) {
+	/*$span.mouseup(function(event) {
 		show_options(event);
-	});
+	});*/
 	$span.css("background-color", "transparent");
 	map[str] = 0; //позиция первого span'a относительно начала текста
 	var j = 0; //счетчик points[]
@@ -36,9 +36,9 @@ function annotate(txt, points, count_of_points)
 			{
 				$span = $(document.createElement("span"));
 				$text.append($span);
-				$span.mouseup(function(event) {
+				/*$span.mouseup(function(event) {
 					show_options(event);
-				});
+				});*/
 				if (cat != '') //добавляем в список название категории
 				{
 					cat += "\n" + points[j]['category'];
@@ -72,11 +72,14 @@ function annotate(txt, points, count_of_points)
 			{
 				$span = $(document.createElement("span"));
 				$text.append($span);
-				$span.mouseup(function(event) {
+				/*$span.mouseup(function(event) {
 					show_options(event);
-				});
+				});*/
 				cat = delete_cat(cat, points[j]['category']); //удаляем из списка лишнюю категорию
-				$span.attr("title", cat);
+				if (cat == '') {
+					$span.removeAttr("title");
+				}
+				else $span.attr("title", cat);
 				r = r*255/points[j]['r']; //обратное умножение цвета
 				g = g*255/points[j]['g'];
 				b = b*255/points[j]['b'];

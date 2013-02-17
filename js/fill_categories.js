@@ -4,7 +4,7 @@
 
 function fill_categories(ObjSel, cat) //ObjSel - объект selection, cat - id категории, которую нужно сделать выбранной по умолчанию
 {
-	var $sel = $(ObjSel);
+	var $sel = ObjSel;
 	$sel.children().remove();
 	if (!cat) //если не присутствует параметр cat
 	{

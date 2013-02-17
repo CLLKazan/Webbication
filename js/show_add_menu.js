@@ -21,7 +21,7 @@ function show_add_menu(event)
 	$form.append($select);
 	$select.attr("id", "list_of_categories");
 	
-	fill_categories(document.getElementById('list_of_categories')); //заполняем блок select списком категорий
+	fill_categories($select); //заполняем блок select списком категорий
 	
 	var $input = $(document.createElement("input"));
 	$form.append($input);
@@ -30,12 +30,12 @@ function show_add_menu(event)
 	var $a = $(document.createElement("a"));
 	$add_menu.append($a);
 	$a.attr("id", "close_menu");
-	$a.click(function () {
-		$("#add_menu").fadeOut("fast", "swing", function () {
+	$a.click(function (event) {
+		$("#add_menu").fadeOut(50, "swing", function () {
 			$("#add_menu").remove();
 		});
 	});
 	$a.append("<img src='css/img/exit_button.png'>");
-	$add_menu.fadeTo("fast", 1,"linear");
+	$add_menu.fadeTo(50, 1,"swing");
 	
 }
