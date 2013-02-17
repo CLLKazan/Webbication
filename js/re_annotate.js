@@ -24,6 +24,10 @@ function re_annotate()
 			{
 				alert("Something is wrong!");
 			}
+			var browser = navigator.userAgent;
+			if (browser.indexOf("MSIE")+1) {
+				location.reload();
+			}
 		}
 	}
 }

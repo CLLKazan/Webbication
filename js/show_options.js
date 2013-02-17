@@ -5,7 +5,7 @@
 
 function show_options(event) //параметр event нужен для того, чтобы получить координаты, в которых нужно отрисовывать меню добавления аннотации.
 {
-	sel = getRangeObject(); //объект выделение
+	var sel = getRangeObject(); //объект выделение
 	selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
 	selection_point2 = get_offset(sel.endContainer, sel.endOffset);
 	if (selection_point1 === selection_point2 && get_count_of_annotations(selection_point1) > 0) //если ничего не выделено (т.е. произошел просто клик мышью по тексту) и в данной позиции присутствую аннотации
