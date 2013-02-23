@@ -17,9 +17,6 @@ function annotate(txt, points, count_of_points)
 	$text.append($span);
 	var str = 'map_0'; //id первого span'a
 	$span.attr("id", str);//открывающий span
-	/*$span.mouseup(function(event) {
-		show_options(event);
-	});*/
 	$span.css("background-color", "transparent");
 	map[str] = 0; //позиция первого span'a относительно начала текста
 	var j = 0; //счетчик points[]
@@ -29,16 +26,13 @@ function annotate(txt, points, count_of_points)
 	{
 		while (points[j] && i == points[j]['position']) //если попали на одну из точек аннотации
 		{
-			$span.html(result); //записываем текст в предыдущий блок
+			$span.text(result); //записываем текст в предыдущий блок
 			result = "";
 			//result += "</span>"; //закрываем предыдущий блок
 			if (points[j]['type'] == 0) //если наша точка - начало аннотации
 			{
 				$span = $(document.createElement("span"));
 				$text.append($span);
-				/*$span.mouseup(function(event) {
-					show_options(event);
-				});*/
 				if (cat != '') //добавляем в список название категории
 				{
 					cat += "\n" + points[j]['category'];
@@ -72,9 +66,6 @@ function annotate(txt, points, count_of_points)
 			{
 				$span = $(document.createElement("span"));
 				$text.append($span);
-				/*$span.mouseup(function(event) {
-					show_options(event);
-				});*/
 				cat = delete_cat(cat, points[j]['category']); //удаляем из списка лишнюю категорию
 				if (cat == '') {
 					$span.removeAttr("title");
@@ -104,8 +95,5 @@ function annotate(txt, points, count_of_points)
 		}
 		result += txt.charAt(i); //добавляем в result следующий символ из текста
 	}
-	$span.html(result);
-	//result += "</span>"; //закрываем последний блок
-	//alert(result);
-	//return result; //возвращаем результат
+	$span.text(result);
 }

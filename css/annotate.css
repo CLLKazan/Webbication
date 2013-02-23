@@ -175,6 +175,10 @@ pre#text {
 	user-select: text !important; 
 }
 
+pre#text span {
+	display: inline;
+}
+
 span.highlighted_span {
 	border: 1px solid #AAAAAA;
 	-moz-border: 1px solid #AAAAAA;

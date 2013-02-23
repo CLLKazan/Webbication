@@ -1,7 +1,6 @@
 /*
 	Эта функции вызывается при загрузке страницы. Она создает все основное содержимое страницы.
 */
-
 function fill()
 {
 	get_document(); //ajax-запрос получения документа и мета-данных
@@ -14,4 +13,10 @@ function fill()
 	$("#text").on("mouseup", "span", function(event) {
 		show_options(event);
 	});
+
+	//удаляем рамочки на IE
+	/*var browser = navigator.userAgent;
+	if (browser.indexOf("MSIE")+1) {
+		$(".highlighted_span").css("border", "none");
+	}*/
 }
