@@ -2,7 +2,7 @@
 	Эта функция отрисовывает окно сложной аннотации
 */
 
-function show_complex_annotation(pos)
+function show_complex_annotation(pos1, pos2)
 {
 	var $wall = $(document.createElement("div"));
 	$("body").append($wall);
@@ -43,7 +43,7 @@ function show_complex_annotation(pos)
 	$table_div.append($table);
 	$table.attr("id", "complex_annotation");
 	
-	fill_window(pos);
+	fill_window(pos1, pos2);
 	
 	$window.fadeTo(50, 1, "swing");
 }

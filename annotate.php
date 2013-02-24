@@ -15,8 +15,15 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="css/annotate.css">
+		
 		<script src="js/jquery.js"></script>
 		<script src="js/text_range.js"></script>
+		
+		<!-- jQuery ContextMenu -->
+		<link rel="stylesheet" type="text/css" href="js/jQuery-contextMenu/jquery.contextMenu.css">
+		<script src="js/jQuery-contextMenu/jquery.contextMenu.js"></script>
+		<script src="js/jQuery-contextMenu/jquery.ui.position.js"></script>
+		
 		<script>
 			id = <?php echo $id; ?>;
 		</script>
@@ -43,7 +50,8 @@
 		<script src="js/close_window.js"></script>
 		<script src="js/highlight_annotation.js"></script>
 		<script src="js/get_complex_annotation.js"></script>
-		<script src="js/show_add_menu.js"></script>
+		<!--Т.к. используем контексное меню, удаляем
+		<script src="js/show_add_menu.js"></script>-->
 		<script src="js/update_annotation.js"></script>
 		<script src="js/fill.js"></script>
 		<script src="js/fill_categories.js"></script>

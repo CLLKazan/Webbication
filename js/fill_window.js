@@ -1,12 +1,31 @@
-function fill_window(pos) {
+function fill_window(pos1, pos2) {
 	var childs = new Array(); //здесь будут храниться побочные аннотации, которые расположены в позиции, на которую указывает курсор (pos)
 	var k = 0; //кол-во побочных аннотаций
 	var min = 1000000000; //инициализация
 	var max = -1000000000;
 	for (var i = 0; i < count_of_points/2; i++)
 	{
-		if (annotations[i]['start'] <= pos && annotations[i]['end'] >= pos) //если pos находится между концом и началом аннотации
+		if (annotations[i]['start'] <= pos1 && annotations[i]['end'] >= pos1) //если pos1 находится между концом и началом аннотации
 		{
+			if (annotations[i]['start'] < min) min = annotations[i]['start']; //запоминаем самую левую точку
+			if (annotations[i]['end'] > max) max = annotations[i]['end']; //запоминаем самую правую точку
+			childs[k] = annotations[i]; //добавляем аннотацию в побочные
+			k++;
+		}
+		else if (annotations[i]['start'] <= pos2 && annotations[i]['end'] >= pos2) //если pos2 находится между концом и началом аннотации
+		{
+			if (annotations[i]['start'] < min) min = annotations[i]['start']; //запоминаем самую левую точку
+			if (annotations[i]['end'] > max) max = annotations[i]['end']; //запоминаем самую правую точку
+			childs[k] = annotations[i]; //добавляем аннотацию в побочные
+			k++;
+		}
+		else if (annotations[i]['start'] >= pos1 && annotations[i]['start'] <= pos2) { //если начало находится между pos1 и pos2
+			if (annotations[i]['start'] < min) min = annotations[i]['start']; //запоминаем самую левую точку
+			if (annotations[i]['end'] > max) max = annotations[i]['end']; //запоминаем самую правую точку
+			childs[k] = annotations[i]; //добавляем аннотацию в побочные
+			k++;
+		}
+		else if (annotations[i]['start'] >= pos2 && annotations[i]['start'] <= pos1) { //если начало находится между pos1 и pos2
 			if (annotations[i]['start'] < min) min = annotations[i]['start']; //запоминаем самую левую точку
 			if (annotations[i]['end'] > max) max = annotations[i]['end']; //запоминаем самую правую точку
 			childs[k] = annotations[i]; //добавляем аннотацию в побочные

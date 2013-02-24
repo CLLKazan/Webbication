@@ -1,20 +1,8 @@
 /*
 	Эта функция передает аттрибуты аннотации php скрипту для ее сохранения
 */
-function add_annotation()
-{
-	var ObjSel = document.getElementById('list_of_categories'); //список категорий
-	var cat; //переменная, в которой будет храниться выбранная категория
-	if (ObjSel.selectedIndex != -1) //если хоть что-нибудь выбрано
-	{
-		cat = ObjSel.options[ObjSel.selectedIndex].value; //присваиваем cat id нужной категории
-	}
-	else return;
-	if (cat == 0) //если cat == 0, значит, в списке выбрано "Выберите категорию"
-	{
-		alert("Выберите категорию!");
-	}
-	
+function add_annotation(cat)
+{	
 	var start, end; //начало и конец аннотации
 	
 	if (selection_point1 > selection_point2) //т.к. выделять можно слева направо и наоборот, инициализируем start и end соответствующе

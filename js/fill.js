@@ -10,8 +10,55 @@ function fill()
 	$("#title").text(title); //заполняем заголовок
 	$("#creation_time").text(date); //заполняем время создания
 	annotate(text, points, count_of_points); //заполняем текст аннотациями и выводим его на страницу
-	$("#text").on("mouseup", "span", function(event) {
-		show_options(event);
+	
+	var submenu_items = new Object();
+	for (var i = 0; i < count_of_categories; i++)
+	{
+		submenu_items[categories[i]['id']] = {
+			name: categories[i]["name"],
+			callback: function(key, opt) {
+				add_annotation(key);
+			}
+		};
+	}
+	$(function(){
+	    $.contextMenu({
+	        selector: '#text span', 
+	        build: function($trigger, e) {
+	        	var sel = getRangeObject(); //объект выделение
+				selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
+				selection_point2 = get_offset(sel.endContainer, sel.endOffset);
+		        if (get_count_of_annotations(selection_point1) > 0 || get_count_of_annotations(selection_point2) > 0) {
+			        return {
+				        items: {
+				        	"add": {
+						        name: "add annotation",
+						        icon: "add",
+						        items: submenu_items
+					        },
+					        "show_complex_annotation": {
+						        name: "show complex annotation",
+						        callback: function(key, opt) {
+						        	show_complex_annotation(selection_point1, selection_point2);
+						        }
+						    }
+				        }
+				    }
+		        }
+		        else {
+			        return {
+				        items: {
+					        "add": {
+						        name: "add annotation",
+						        icon: "add",
+						        items: submenu_items
+					        }
+				        }
+			        }
+		        }
+	        }
+	    });
+	    
 	});
 
 	//удаляем рамочки на IE
