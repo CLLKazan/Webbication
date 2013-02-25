@@ -36,14 +36,7 @@ function fill()
 						        name: "add annotation",
 						        icon: "add",
 						        items: submenu_items
-					        },
-					        "delete": {
-						        name: "delete annotation",
-						        icon: "delete",
-						        callback: function(key, opt) {
-						        	alert($(this).attr("id"));
-						        }
-						    }
+					        }
 				        }
 				    }
 		        }
@@ -73,7 +66,13 @@ function fill()
 						        name: "delete annotation",
 						        icon: "delete",
 						        callback: function(key, opt) {
-						        	alert($(this).attr("id"));
+						        	delete_annotation_by_pos(map[$(this).attr("id")]);
+						        }
+						    },
+						    "show_complex_annotation": {
+						        name: "show complex annotation",
+						        callback: function(key, opt) {
+						        	show_complex_annotation(selection_point1, selection_point2);
 						        }
 						    }
 				        }
@@ -86,9 +85,17 @@ function fill()
 						        name: "delete annotation",
 						        icon: "delete",
 						        callback: function(key, opt) {
-						        	alert($(this).attr("id"));
+						        	delete_annotation_by_pos(map[$(this).attr("id")]);
 						        }
-					        }
+					        },
+					        "show_complex_annotation": {
+						        name: "show complex annotation",
+						        callback: function(key, opt) {
+						        	var str = $(this).attr("id");
+						        	var n = str.substr(str.indexOf("_")+1)*1;
+						        	show_complex_annotation(map["map_"+n], map["map_"+(n+1)]);
+						        }
+						    }
 				        }
 			        }
 		        }
@@ -125,7 +132,9 @@ function fill()
 					        "show_complex_annotation": {
 						        name: "show complex annotation",
 						        callback: function(key, opt) {
-						        	show_complex_annotation(selection_point1, selection_point2);
+						        	var str = $(this).attr("id");
+						        	var n = str.substr(str.indexOf("_")+1)*1;
+						        	show_complex_annotation(map["map_"+n], map["map_"+(n+1)]);
 						        }
 						    }
 				        }
