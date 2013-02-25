@@ -22,6 +22,7 @@ function annotate(txt, points, count_of_points)
 	var j = 0; //счетчик points[]
 	var end = txt.length; //длина текста
 	var result = "";
+	var cat_count = 0;
 	for (var i = 0; i < end; i++)
 	{
 		while (points[j] && i == points[j]['position']) //если попали на одну из точек аннотации
@@ -36,10 +37,21 @@ function annotate(txt, points, count_of_points)
 				if (cat != '') //добавляем в список название категории
 				{
 					cat += "\n" + points[j]['category'];
+					cat_count++;
 				}
 				else 
 				{
 					cat += points[j]['category'];
+					cat_count++;
+				}
+				if (cat_count == 0) {
+					$span.addClass("plain_text");
+				}
+				else if (cat_count == 1) {
+					$span.addClass("simple_annotation");
+				}
+				else {
+					$span.addClass("complex_annotation");
 				}
 				$span.attr("title", cat);
 				r = points[j]['r']*r/255; //умножаем цвет фона
@@ -67,6 +79,16 @@ function annotate(txt, points, count_of_points)
 				$span = $(document.createElement("span"));
 				$text.append($span);
 				cat = delete_cat(cat, points[j]['category']); //удаляем из списка лишнюю категорию
+				cat_count--;
+				if (cat_count == 0) {
+					$span.addClass("plain_text");
+				}
+				else if (cat_count == 1) {
+					$span.addClass("simple_annotation");
+				}
+				else {
+					$span.addClass("complex_annotation");
+				}
 				if (cat == '') {
 					$span.removeAttr("title");
 				}

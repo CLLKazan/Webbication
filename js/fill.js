@@ -21,14 +21,88 @@ function fill()
 			}
 		};
 	}
+
+	$(function() {
+		$.contextMenu({
+			selector: '#text .plain_text',
+			build: function($trigger, e) {
+	        	var sel = getRangeObject(); //объект выделение
+				selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
+				selection_point2 = get_offset(sel.endContainer, sel.endOffset);
+		        if (sel.toString() != "") {
+			        return {
+				        items: {
+				        	"add": {
+						        name: "add annotation",
+						        icon: "add",
+						        items: submenu_items
+					        },
+					        "delete": {
+						        name: "delete annotation",
+						        icon: "delete",
+						        callback: function(key, opt) {
+						        	alert($(this).attr("id"));
+						        }
+						    }
+				        }
+				    }
+		        }
+		        else {
+			        return; 
+		        }
+	        }
+		});
+	})
+
+	$(function() {
+		$.contextMenu({
+			selector: '#text .simple_annotation',
+			build: function($trigger, e) {
+	        	var sel = getRangeObject(); //объект выделение
+				selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
+				selection_point2 = get_offset(sel.endContainer, sel.endOffset);
+		        if (sel.toString() != "") {
+			        return {
+				        items: {
+				        	"add": {
+						        name: "add annotation",
+						        icon: "add",
+						        items: submenu_items
+					        },
+					        "delete": {
+						        name: "delete annotation",
+						        icon: "delete",
+						        callback: function(key, opt) {
+						        	alert($(this).attr("id"));
+						        }
+						    }
+				        }
+				    }
+		        }
+		        else {
+			        return {
+				        items: {
+					        "delete": {
+						        name: "delete annotation",
+						        icon: "delete",
+						        callback: function(key, opt) {
+						        	alert($(this).attr("id"));
+						        }
+					        }
+				        }
+			        }
+		        }
+	        }
+		});
+	})
 	$(function(){
 	    $.contextMenu({
-	        selector: '#text span', 
+	        selector: '#text .complex_annotation', 
 	        build: function($trigger, e) {
 	        	var sel = getRangeObject(); //объект выделение
 				selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
 				selection_point2 = get_offset(sel.endContainer, sel.endOffset);
-		        if (get_count_of_annotations(selection_point1) > 0 || get_count_of_annotations(selection_point2) > 0) {
+		        if (sel.toString() != "") {
 			        return {
 				        items: {
 				        	"add": {
@@ -48,11 +122,12 @@ function fill()
 		        else {
 			        return {
 				        items: {
-					        "add": {
-						        name: "add annotation",
-						        icon: "add",
-						        items: submenu_items
-					        }
+					        "show_complex_annotation": {
+						        name: "show complex annotation",
+						        callback: function(key, opt) {
+						        	show_complex_annotation(selection_point1, selection_point2);
+						        }
+						    }
 				        }
 			        }
 		        }
