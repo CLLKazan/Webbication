@@ -62,8 +62,15 @@ function fill()
 						        icon: "add",
 						        items: submenu_items
 					        },
+					        "edit": {
+					        	name: "edit",
+					        	icon: "edit",
+					        	callback: function(key, opt) {
+						        	
+					        	}
+				        	},
 					        "delete": {
-						        name: "delete annotation",
+						        name: "delete",
 						        icon: "delete",
 						        callback: function(key, opt) {
 						        	delete_annotation_by_pos(map[$(this).attr("id")]);
@@ -81,8 +88,15 @@ function fill()
 		        else {
 			        return {
 				        items: {
+				        	"edit": {
+					        	name: "edit",
+					        	icon: "edit",
+					        	callback: function(key, opt) {
+						        	
+					        	}
+				        	},
 					        "delete": {
-						        name: "delete annotation",
+						        name: "delete",
 						        icon: "delete",
 						        callback: function(key, opt) {
 						        	delete_annotation_by_pos(map[$(this).attr("id")]);
@@ -109,9 +123,17 @@ function fill()
 	        	var sel = getRangeObject(); //объект выделение
 				selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
 				selection_point2 = get_offset(sel.endContainer, sel.endOffset);
+				
+				var str = $trigger.attr("id");
+				var n = str.substr(str.indexOf("_")+1)*1;
+				
 		        if (sel.toString() != "") {
 			        return {
 				        items: {
+				        	"annotations": {
+					        	name: "annotations",
+					        	items: get_annotations_list(selection_point1, selection_point2)
+				        	},
 				        	"add": {
 						        name: "add annotation",
 						        icon: "add",
@@ -129,6 +151,10 @@ function fill()
 		        else {
 			        return {
 				        items: {
+				        	"annotations": {
+					        	name: "annotations",
+					        	items: get_annotations_list(map["map_"+n], map["map_"+(n+1)])
+				        	},
 					        "show_complex_annotation": {
 						        name: "show complex annotation",
 						        callback: function(key, opt) {

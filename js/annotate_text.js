@@ -17,6 +17,7 @@ function annotate(txt, points, count_of_points)
 	$text.append($span);
 	var str = 'map_0'; //id первого span'a
 	$span.attr("id", str);//открывающий span
+	$span.addClass("plain_text");
 	$span.css("background-color", "transparent");
 	map[str] = 0; //позиция первого span'a относительно начала текста
 	var j = 0; //счетчик points[]
