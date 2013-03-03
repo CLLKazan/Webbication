@@ -52,7 +52,9 @@ function get_annotations_list(pos1, pos2) {
 			name: "edit",
 			icon: "edit",
 			callback: function(key, opt) {
-				
+				var s = key;
+				s = s.substr(s.indexOf("edit")+4);
+				edit_annotation(s);			
 			}
 		}
 		ann_list[childs[i]['id']].items["delete"+childs[i]['id']] = {

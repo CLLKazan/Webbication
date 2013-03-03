@@ -66,7 +66,7 @@ function fill()
 					        	name: "edit",
 					        	icon: "edit",
 					        	callback: function(key, opt) {
-						        	
+						        	edit_annotation_by_pos(map[$(this).attr("id")]);
 					        	}
 				        	},
 					        "delete": {
@@ -92,7 +92,7 @@ function fill()
 					        	name: "edit",
 					        	icon: "edit",
 					        	callback: function(key, opt) {
-						        	
+						        	edit_annotation_by_pos(map[$(this).attr("id")]);
 					        	}
 				        	},
 					        "delete": {

@@ -58,6 +58,8 @@
 		<script src="js/fill_palette.js"></script>
 		<script src="js/fill_window.js"></script>
 		<script src="js/get_annotations_list.js"></script>
+		<script src="js/edit_annotation.js"></script>
+		<script src="js/create_range_of_annotation.js"></script>
 		<title>Text Annotation Project</title>
 	</head>
 	
