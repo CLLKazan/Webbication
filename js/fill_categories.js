@@ -33,7 +33,7 @@ function fill_categories(ObjSel, cat) //ObjSel - объект selection, cat - i
 		}
 		var $option = $(document.createElement("option"));
 		$sel.append($option);
-		$option.append("value", cat);
+		$option.attr("value", cat);
 		$option.text(name);
 		$option.prop("selected", "selected");
 		for (var i = 0; i < count_of_categories; i++)

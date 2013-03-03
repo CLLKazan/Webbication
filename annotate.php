@@ -60,6 +60,7 @@
 		<script src="js/get_annotations_list.js"></script>
 		<script src="js/edit_annotation.js"></script>
 		<script src="js/create_range_of_annotation.js"></script>
+		<script src="js/show_edit_options.js"></script>
 		<title>Text Annotation Project</title>
 	</head>
 	

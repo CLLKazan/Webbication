@@ -9,13 +9,17 @@ function re_annotate()
 		if (this.status == 200)
 		{
 			get_annotations(); //получаем из базы все аннотации, связанные с текстом
+			$("#text").text("");
 			annotate(text, points, count_of_points); //аннотируем текст
-			if ($("#add_menu")) //если меню добавления аннотации все еще видно, закрываем
+			if ($("#edit_options")) {
+				$("#edit_options").remove();
+			}
+			/*if ($("#add_menu")) //если меню добавления аннотации все еще видно, закрываем
 			{
 				$("#add_menu").fadeOut(50, "swing", function () {
 					$("#add_menu").remove();
 				});
-			}
+			}*/
 			if ($("#wall")) //если открыто окно сложных аннотаций, обновляем его содержимое
 			{
 				fill_window(selection_point1);

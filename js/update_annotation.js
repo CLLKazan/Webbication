@@ -2,7 +2,7 @@
 	Эта функция обновляет аннотацию (изменяет ее категорию)
 */
 
-function update_annotation(ann) //параметр ann - id аннотации
+function update_annotation(ann, extended) //параметр ann - id аннотации
 {
 	var str = "sel_"+ann; //получаем id блока select, соответствующего аннотации
 	var ObjSel = document.getElementById(str);
@@ -17,9 +17,36 @@ function update_annotation(ann) //параметр ann - id аннотации
 		alert("Выберите категорию!");
 	}
 	
+	if (extended) {
+		var sel = getRangeObject(); //объект выделение
+		selection_point1 = sel.startOffset; //получаем позиции начала и конца выделения
+		selection_point2 = sel.endOffset;
+		
+		var start, end; //начало и конец аннотации
+		
+		if (selection_point1 > selection_point2) //т.к. выделять можно слева направо и наоборот, инициализируем start и end соответствующе
+		{
+			start = selection_point2;
+			end = selection_point1;
+		}
+		else if (selection_point1 < selection_point2)
+		{
+			start = selection_point1;
+			end = selection_point2;
+		}
+		else if (selection_point1 === selection_point2) //если выделение нулевое, выходим
+		{
+			return;
+		}
+		
+		params = "id="+id+"&ann_id="+ann+"&cat="+cat+"&start="+start+"&end="+end; //параметры
+	}
+	else {
+		params = "id="+id+"&ann_id="+ann+"&cat="+cat; //параметры
+	}
 	var request = AjaxRequest(); //ajax переменная
 	
-	params = "id="+id+"&ann_id="+ann+"&cat="+cat; //параметры
+	
 	request.open("POST", "php/update_annotation.php", false); //соединяемся с сервером
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //heider'ы, указывающие, что параметры будут переданы методом POST
 	request.setRequestHeader("Content-length", params.length);

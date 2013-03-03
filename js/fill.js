@@ -26,10 +26,12 @@ function fill()
 		$.contextMenu({
 			selector: '#text .plain_text',
 			build: function($trigger, e) {
-	        	var sel = getRangeObject(); //объект выделение
-				selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
-				selection_point2 = get_offset(sel.endContainer, sel.endOffset);
-		        if (sel.toString() != "") {
+				var sel = getRangeObject(); //объект выделение
+	        	if (sel) {
+					selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
+					selection_point2 = get_offset(sel.endContainer, sel.endOffset);
+				}
+		        if (sel && sel.toString() != "") {
 			        return {
 				        items: {
 				        	"add": {
@@ -52,9 +54,11 @@ function fill()
 			selector: '#text .simple_annotation',
 			build: function($trigger, e) {
 	        	var sel = getRangeObject(); //объект выделение
-				selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
-				selection_point2 = get_offset(sel.endContainer, sel.endOffset);
-		        if (sel.toString() != "") {
+				if (sel) {
+					selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
+					selection_point2 = get_offset(sel.endContainer, sel.endOffset);
+				}
+		        if (sel && sel.toString() != "") {
 			        return {
 				        items: {
 				        	"add": {
@@ -121,13 +125,15 @@ function fill()
 	        selector: '#text .complex_annotation', 
 	        build: function($trigger, e) {
 	        	var sel = getRangeObject(); //объект выделение
-				selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
-				selection_point2 = get_offset(sel.endContainer, sel.endOffset);
+				if (sel) {
+					selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
+					selection_point2 = get_offset(sel.endContainer, sel.endOffset);
+				}
 				
 				var str = $trigger.attr("id");
 				var n = str.substr(str.indexOf("_")+1)*1;
 				
-		        if (sel.toString() != "") {
+		        if (sel && sel.toString() != "") {
 			        return {
 				        items: {
 				        	"annotations": {

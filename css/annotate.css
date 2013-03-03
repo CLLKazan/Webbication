@@ -93,6 +93,28 @@ a#palette_button:hover {
 	background-position-y: 40px;
 }
 
+#edit_options {
+	max-width: 120px;
+	width: auto;
+	background: rgba(0,0,0,0.5);
+	border-radius: 2px;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+.categories_list {
+	display: block;
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+#edit_form input[type="submit"] {
+	display: block;
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
 
 /* Меняй display: block; чтобы увидеть палитру */
 div#palette {
@@ -100,7 +122,7 @@ div#palette {
 	overflow-y: hidden;
 	max-height: 500px;
 	position: relative;
-	top: 10px;
+	margin-top: 10px;
 	width: 200px;
 }
 
