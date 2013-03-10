@@ -13,6 +13,7 @@ function show_edit_options(edit_ann) {
 	$edit_options.append($edit_form);
 	$edit_form.attr("id", "edit_form");
 	$edit_form.attr("action", "javascript: update_annotation("+edit_ann['id']+", true);");
+	//$edit_form.attr("action", "javascript: alert("+edit_ann['id']+");");
 	
 	var $select = $(document.createElement("select"));
 	$edit_form.append($select);

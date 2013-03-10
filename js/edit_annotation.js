@@ -11,11 +11,12 @@ function edit_annotation(ann_id) {
 		}
 	}
 	
-	create_range_of_annotation(edit_ann);
+	create_range_of_annotation(edit_ann["start"], edit_ann["end"]);
 	show_edit_options(edit_ann);
 	
 	$("#edit_options").mouseover(function() {
 		var sel = getRangeObject(); //объект выделение
+		//alert(sel.startOffset);
 		selection_point1 = sel.startOffset; //получаем позиции начала и конца выделения
 		selection_point2 = sel.endOffset;
 		if (selection_point1 === selection_point2) {
@@ -24,6 +25,18 @@ function edit_annotation(ann_id) {
 		else {
 			$("#save_button").prop("disabled", "");
 		}
+	});
+	
+	$('#text').mouseleave(function() {
+		var sel = getRangeObject(); //объект выделение
+    	if (sel) {
+			selection_point1 = get_offset(sel.startContainer, sel.startOffset); //получаем позиции начала и конца выделения
+			selection_point2 = get_offset(sel.endContainer, sel.endOffset);
+		}
+	});
+	
+	$("#header").on("click.edit_ann", function() {
+		create_range_of_annotation(selection_point1, selection_point2);
 	});
 }
 

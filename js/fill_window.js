@@ -1,4 +1,6 @@
-function fill_window(pos1, pos2) {
+function fill_window() {
+	var pos1 = $("#window").attr("data-point1");
+	var pos2 = $("#window").attr("data-point2");
 	var childs = new Array(); //здесь будут храниться побочные аннотации, которые расположены в позиции, на которую указывает курсор (pos)
 	var k = 0; //кол-во побочных аннотаций
 	var min = 1000000000; //инициализация

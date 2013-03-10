@@ -16,6 +16,8 @@ function show_complex_annotation(pos1, pos2)
 	var $window = $(document.createElement("div"));
 	$wall.append($window);
 	$window.attr("id", "window");
+	$window.attr("data-point1", pos1);
+	$window.attr("data-point2", pos2);
 	$window.css("opacity", "0");
 	$window.click(function(event) {
 		event.stopPropagation();
@@ -43,7 +45,7 @@ function show_complex_annotation(pos1, pos2)
 	$table_div.append($table);
 	$table.attr("id", "complex_annotation");
 	
-	fill_window(pos1, pos2);
+	fill_window();
 	
 	$window.fadeTo(50, 1, "swing");
 }

@@ -1,4 +1,4 @@
-function create_range_of_annotation(edit_ann) {	
+function create_range_of_annotation(start, end) {	
 	var root = document.getElementById("text").firstChild;
 	var rng;
 	var sel;
@@ -6,14 +6,14 @@ function create_range_of_annotation(edit_ann) {
 	if (browser.indexOf("MSIE")+1) {
 		rng = root.createTextRange();
 		rng.collapse(true);
-		rng.moveStart("character", edit_ann["start"]);
-		rng.moveEnd("character", edit_ann["end"]);
+		rng.moveStart("character", start);
+		rng.moveEnd("character", end);
 		rng.select();
 	}
 	else {
 		rng = document.createRange();
-		rng.setStart(root, edit_ann["start"]);
-		rng.setEnd(root, edit_ann["end"]);
+		rng.setStart(root, start);
+		rng.setEnd(root, end);
 		sel = window.getSelection();
 		sel.removeAllRanges();
 		sel.addRange(rng);

@@ -10,6 +10,9 @@ function re_annotate()
 		{
 			get_annotations(); //получаем из базы все аннотации, связанные с текстом
 			$("#text").text("");
+			$("#header").unbind(".edit_ann");
+			/*$("#text").unbind("mouseleave");
+			$("#text").unbind("mouseenter");*/
 			annotate(text, points, count_of_points); //аннотируем текст
 			if ($("#edit_options")) {
 				$("#edit_options").remove();
@@ -22,7 +25,7 @@ function re_annotate()
 			}*/
 			if ($("#wall")) //если открыто окно сложных аннотаций, обновляем его содержимое
 			{
-				fill_window(selection_point1);
+				fill_window();
 			}
 			if (this.responseText == null)
 			{

@@ -18,9 +18,9 @@ function update_annotation(ann, extended) //параметр ann - id аннот
 	}
 	
 	if (extended) {
-		var sel = getRangeObject(); //объект выделение
-		selection_point1 = sel.startOffset; //получаем позиции начала и конца выделения
-		selection_point2 = sel.endOffset;
+		//var sel = getRangeObject(); //объект выделение
+		//selection_point1 = sel.startOffset; //получаем позиции начала и конца выделения
+		//selection_point2 = sel.endOffset;
 		
 		var start, end; //начало и конец аннотации
 		
@@ -45,7 +45,6 @@ function update_annotation(ann, extended) //параметр ann - id аннот
 		params = "id="+id+"&ann_id="+ann+"&cat="+cat; //параметры
 	}
 	var request = AjaxRequest(); //ajax переменная
-	
 	
 	request.open("POST", "php/update_annotation.php", false); //соединяемся с сервером
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); //heider'ы, указывающие, что параметры будут переданы методом POST
