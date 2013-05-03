@@ -15,14 +15,16 @@
 	$query = "SELECT title, creation_time, doc_text FROM document WHERE id=".$id.";";
 	$result = mysql_query($query);
 	$row = mysql_fetch_row($result);
-	
-	$split = 's693ncsl';
 						
 	$txt = $row[2];
 	$title = $row[0];
 	$date = $row[1];
 	
-	echo $title.$split.$date.$split.$txt.$split;
+	$document->text = $row[2];
+	$document->title = $row[0];
+	$document->date = $row[1];
+	
+	echo json_encode($document);
 								
 	mysql_close();
 ?>

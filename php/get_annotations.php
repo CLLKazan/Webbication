@@ -12,13 +12,10 @@
 
 	require_once "mysql_entry.php";
 	
-	$split = 's693ncsl';
 	
 	$query = "SELECT start_offset, end_offset, category, id FROM annotation WHERE doc_id=".$id.";";
 	$result = mysql_query($query);
 	$count = mysql_num_rows($result);
-						
-	echo 2*$count.$split;
 
 	for ($i = 0; $i < $count; $i++)
 	{
@@ -26,10 +23,16 @@
 		$subquery = "SELECT name, red, green, blue FROM categories WHERE id=".$row[2].";";
 		$subres = mysql_query($subquery);
 		$meta = mysql_fetch_row($subres);
-							
-		echo $row[0].$split."0".$split.$meta[0].$split.$meta[1].$split.$meta[2].$split.$meta[3].$split;
-		echo $row[1].$split."1".$split.$meta[0].$split.$meta[1].$split.$meta[2].$split.$meta[3].$split;
-		echo $row[0].$split.$row[1].$split.$meta[0].$split.$row[3].$split.$row[2].$split;
+		
+		$annotations[$i]->start_offset = $row[0];
+		$annotations[$i]->end_offset = $row[1];
+		$annotations[$i]->id = $row[3];
+		$annotations[$i]->category_id = $row[2];
+		$annotations[$i]->category_name = $meta[0];
+		$annotations[$i]->red = $meta[1];
+		$annotations[$i]->green = $meta[2];
+		$annotations[$i]->blue = $meta[3];
 	}
 	mysql_close();
+	echo json_encode($annotations);
 ?>
