@@ -1,12 +1,12 @@
 var textObject = {
 		id: "",
 		document: new Object(),
-		annotations: new Array(),
+		annotations: new Object(),
 		
 		update: function() {
-			this.getPostData("php/get_document.php", "id="+this.id, document);
-			this.getPostData("php/get_annotations.php", "id="+this.id. annotations);
-		}
+			this.getPostData("php/get_document.php", "id="+this.id, "document");
+			this.getPostData("php/get_annotations.php", "id="+this.id, "annotations");
+		},
 		
 		getPostData: function(url, params, object) {
 			var ajaxRequest;
@@ -43,49 +43,60 @@ var textObject = {
 			ajaxRequest.send(params);
 			
 			if (ajaxRequest.status == 200) {
-				object = JSON.parse(ajaxRequest.responseText);
+				this[object] = JSON.parse(ajaxRequest.responseText);
 			}
-		}
+			else this[object] = undefined;
+		},
 		
 		annotateText: function() {
 			var points = new Array();
 			for (var i = 0; i < this.annotations.length; i++) {
-				points.push = {
-					"position": this.annotations[i]["start_offset"], 
+				points.push({
+					"position": parseInt(this.annotations[i]["start_offset"]), 
 					"type": 0,
 					"category": this.annotations[i]["category_name"],
 					"r": this.annotations[i]["red"],
 					"g": this.annotations[i]["green"],
 					"b": this.annotations[i]["blue"]
-				};
-				points.push = {
-					"position": this.annotations[i]["end_offset"], 
+				});
+				points.push({
+					"position": parseInt(this.annotations[i]["end_offset"]), 
 					"type": 1,
 					"category": this.annotations[i]["category_name"],
 					"r": this.annotations[i]["red"],
 					"g": this.annotations[i]["green"],
 					"b": this.annotations[i]["blue"]
-				};
+				});
 			}
 			points.sort(function(a, b) {
+				//console.log(a["position"]+"|"+a["type"]+"?"+b["position"]+"|"+b["type"]);
 				if (a["position"] > b["position"]) {
+					//console.log(1);
 					return 1;
 				}
 				else if (a["position"] < b["position"]) {
+					//console.log(-1);
 					return -1;
 				}
 				else {
 					if (a["type"] > b["type"]) {
+						//console.log(2);
 						return 1;
 					}
 					else if (a["type"] < b["type"]) {
+						//console.log(-2);
 						return -1;
 					}
-					else return 0;
+					else {
+						//console.log(0);
+						return 0;
+					}
 				}
 			});
+			//console.log(JSON.stringify(points));
 			
 			var isDark = function(r, g, b) {
+				//console.log(0.213*(r/255) + 0.715*(g/255) + 0.072*(b/255));
 				if (0.213*(r/255) + 0.715*(g/255) + 0.072*(b/255) < 0.6) {
 					return true;
 				}
@@ -121,7 +132,7 @@ var textObject = {
 			
 			var deleteCategory = function (str, cat) {
 				var res = ''; 
-				var arr = str.split('\n'); //разделяем строку на массив
+				var arr = str.split('\n'); 
 				var i;
 				var add;
 				var k = 0;
@@ -148,7 +159,8 @@ var textObject = {
 			var category_count = 0;
 			var j = 0;
 			var end = this.document.text.length;
-			var classes = {"plain_text", "highlighted_span", "white_text"};
+			var classes = ["plain_text", "highlighted_span", "white_text"];
+			//console.log(r+" "+g+" "+b);
 			var result = "<span class='"+classes[0]+"' data-position='"+0+"'>";
 			
 			for (var i = 0; i < end; i++) {
@@ -159,13 +171,14 @@ var textObject = {
 					var data_position = i;
 					if (points[j]["type"] == 0) {
 						if (category != "") {
-							category += "/n";
+							category += "\n";
 						}
 						category += points[j]["category"];
 						category_count++;
 						r = points[j]['r']*r/255;
 						g = points[j]['g']*g/255;
 						b = points[j]['b']*b/255;
+						//console.log("*["+points[j]["r"]+"|"+points[j]["g"]+"|"+points[j]["b"]+"]");
 						bg_color = getColor(r, g, b);
 						span_class = classes[1];
 						if (isDark(r, g, b)) {
@@ -193,7 +206,8 @@ var textObject = {
 							}
 						}
 					}
-					result += "<span class='"+span_class+"' data-position='"+data_position+"' title='"+category+"' style='background-color: '"+bg_color+";'>";
+					//console.log(r+" "+g+" "+b);
+					result += "<span class='"+span_class+"' data-position='"+data_position+"' title='"+category+"' style='background-color: "+bg_color+";'>";
 					j++;
 				}
 				result += this.document.text.charAt(i);
@@ -204,6 +218,3 @@ var textObject = {
 			
 		},
 	};
-textObject.id = 9;
-//textObject.getAnnotations();
-//console.log(JSON.stringify(textObject.annotations));

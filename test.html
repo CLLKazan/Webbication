@@ -4,8 +4,21 @@
 		<meta charset="utf-8">
 		<title>Test Json</title>
 		<script src="js/textobject.js"></script>
+		<script>
+			textObject.id = 20;
+			textObject.update();
+		</script>
+		<style>
+			.white_text {
+				color: white;
+			}
+		</style>
 	</head>
-	
+		<script>
+			console.log(JSON.stringify(textObject.annotations));
+			//document.write(textObject.document["text"]);
+			document.write("<p>"+textObject.annotateText()+"</p>");
+		</script>
 	<body>
 	</body>
 </html>
