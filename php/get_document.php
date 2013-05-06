@@ -15,14 +15,10 @@
 	$query = "SELECT title, creation_time, doc_text FROM document WHERE id=".$id.";";
 	$result = mysql_query($query);
 	$row = mysql_fetch_row($result);
-						
-	$txt = $row[2];
-	$title = $row[0];
-	$date = $row[1];
 	
 	$document->text = $row[2];
 	$document->title = $row[0];
-	$document->date = $row[1];
+	$document->creation_time = $row[1];
 	
 	echo json_encode($document);
 								

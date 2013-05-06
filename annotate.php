@@ -15,56 +15,23 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="css/annotate.css">
-		
-		<script src="js/jquery.js"></script>
-		<script src="js/text_range.js"></script>
-		
-		<!-- jQuery ContextMenu -->
-		<link rel="stylesheet" type="text/css" href="js/jQuery-contextMenu/jquery.contextMenu.css">
-		<script src="js/jQuery-contextMenu/jquery.contextMenu.js"></script>
-		<script src="js/jQuery-contextMenu/jquery.ui.position.js"></script>
-		
+		<script src="js/textobject.js"></script>
+		<script src="js/palette.js"></script>		
 		<script>
-			id = <?php echo $id; ?>;
+			window.onload = function() {
+				textObject.id = <?php echo $id; ?>;
+				textObject.init();
+				palette.init(textObject.categories);
+				document.getElementById("palette_button").onclick = function() {
+					//console.log("it works!");
+					palette.toggleVisibility();
+				};
+			};
 		</script>
-		<script src="js/ajax.js"></script>
-		<script src="js/global_variables.js"></script>
-		<script src="js/delete_annotation.js"></script>
-		<script src="js/get_annotations.js"></script>
-		<script src="js/parse_annotations.js"></script>
-		<script src="js/get_document.js"></script>
-		<script src="js/parse_text.js"></script>
-		<script src="js/get_categories.js"></script>
-		<script src="js/parse_categories.js"></script>
-		<script src="js/add_annotation.js"></script>
-		<script src="js/re_annotate.js"></script>
-		<script src="js/get_offset.js"></script>
-		<script src="js/annotate_text.js"></script>
-		<script src="js/IsDark.js"></script>
-		<script src="js/GetColor.js"></script>
-		<script src="js/qsort.js"></script>
-		<script src="js/delete_cat.js"></script>
-		<script src="js/show_options.js"></script>
-		<script src="js/get_count_of_annotations.js"></script>
-		<script src="js/show_complex_annotation.js"></script>
-		<script src="js/close_window.js"></script>
-		<script src="js/highlight_annotation.js"></script>
-		<script src="js/get_complex_annotation.js"></script>
-		<!--Т.к. используем контексное меню, удаляем
-		<script src="js/show_add_menu.js"></script>-->
-		<script src="js/update_annotation.js"></script>
-		<script src="js/fill.js"></script>
-		<script src="js/fill_categories.js"></script>
-		<script src="js/fill_palette.js"></script>
-		<script src="js/fill_window.js"></script>
-		<script src="js/get_annotations_list.js"></script>
-		<script src="js/edit_annotation.js"></script>
-		<script src="js/create_range_of_annotation.js"></script>
-		<script src="js/show_edit_options.js"></script>
 		<title>Text Annotation Project</title>
 	</head>
 	
-	<body onLoad="fill();">
+	<body>
 		
 		<div id="wrapper">
 		
@@ -79,7 +46,7 @@
 					</div>
 					
 					<div id="tools">
-						<a id="palette_button" onclick="javascript: $('#palette').slideToggle('fast', 'swing');">Палитра</a>
+						<a id="palette_button">Палитра</a>
 						
 						<div id="palette">
 						</div>

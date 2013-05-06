@@ -118,12 +118,14 @@ a#palette_button:hover {
 
 /* Меняй display: block; чтобы увидеть палитру */
 div#palette {
-	display: none;
 	overflow-y: hidden;
 	max-height: 500px;
 	position: relative;
 	margin-top: 10px;
 	width: 200px;
+	transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	height: 0px;
 }
 
 div#palette:hover {

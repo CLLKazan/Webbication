@@ -2,10 +2,12 @@ var textObject = {
 		id: "",
 		document: new Object(),
 		annotations: new Object(),
+		categories: new Object(),
 		
 		update: function() {
 			this.getPostData("php/get_document.php", "id="+this.id, "document");
 			this.getPostData("php/get_annotations.php", "id="+this.id, "annotations");
+			this.getPostData("php/get_categories.php", "", "categories");
 		},
 		
 		getPostData: function(url, params, object) {
@@ -214,7 +216,23 @@ var textObject = {
 			}
 			return result;
 		},
-		addAnnotation: function() {
-			
+		
+		showDocumentMetaData: function() {
+			var title = document.getElementById("title");
+			var creation_time = document.getElementById("creation_time");
+			//console.log(JSON.stringify(this.document));
+			title.textContent = this.document.title;
+			creation_time.textContent = this.document.creation_time;
 		},
+		
+		showAnnotatedText: function() {
+			var text = document.getElementById("text");
+			text.innerHTML = this.annotateText();
+		},
+		
+		init: function() {
+			this.update();
+			this.showDocumentMetaData();
+			this.showAnnotatedText();
+		}
 	};
