@@ -16,15 +16,26 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="css/annotate.css">
 		<script src="js/textobject.js"></script>
-		<script src="js/palette.js"></script>		
+		<script src="js/palette.js"></script>	
+		<script src="js/text_range.js"></script>
+		<script src="js/showcontextmenu.js"></script>
+		
+		<!--Context-menu-->
+		<link rel="stylesheet" type="text/css" href="js/context-menu/context-menu.css">
+		<script src="js/context-menu/context-menu.js"></script>
+		<!--/Context-menu-->
+		
 		<script>
 			window.onload = function() {
 				textObject.id = <?php echo $id; ?>;
 				textObject.init();
 				palette.init(textObject.categories);
 				document.getElementById("palette_button").onclick = function() {
-					//console.log("it works!");
 					palette.toggleVisibility();
+				};
+				var context_menu = new ContextMenu();
+				document.getElementById("text").oncontextmenu = function(event) {
+					showContextMenu(event, this, context_menu, textObject);
 				};
 			};
 		</script>

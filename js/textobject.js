@@ -71,34 +71,26 @@ var textObject = {
 				});
 			}
 			points.sort(function(a, b) {
-				//console.log(a["position"]+"|"+a["type"]+"?"+b["position"]+"|"+b["type"]);
 				if (a["position"] > b["position"]) {
-					//console.log(1);
 					return 1;
 				}
 				else if (a["position"] < b["position"]) {
-					//console.log(-1);
 					return -1;
 				}
 				else {
 					if (a["type"] > b["type"]) {
-						//console.log(2);
 						return 1;
 					}
 					else if (a["type"] < b["type"]) {
-						//console.log(-2);
 						return -1;
 					}
 					else {
-						//console.log(0);
 						return 0;
 					}
 				}
 			});
-			//console.log(JSON.stringify(points));
 			
 			var isDark = function(r, g, b) {
-				//console.log(0.213*(r/255) + 0.715*(g/255) + 0.072*(b/255));
 				if (0.213*(r/255) + 0.715*(g/255) + 0.072*(b/255) < 0.6) {
 					return true;
 				}
@@ -162,7 +154,6 @@ var textObject = {
 			var j = 0;
 			var end = this.document.text.length;
 			var classes = ["plain_text", "highlighted_span", "white_text"];
-			//console.log(r+" "+g+" "+b);
 			var result = "<span class='"+classes[0]+"' data-position='"+0+"'>";
 			
 			for (var i = 0; i < end; i++) {
@@ -180,7 +171,6 @@ var textObject = {
 						r = points[j]['r']*r/255;
 						g = points[j]['g']*g/255;
 						b = points[j]['b']*b/255;
-						//console.log("*["+points[j]["r"]+"|"+points[j]["g"]+"|"+points[j]["b"]+"]");
 						bg_color = getColor(r, g, b);
 						span_class = classes[1];
 						if (isDark(r, g, b)) {
@@ -208,7 +198,6 @@ var textObject = {
 							}
 						}
 					}
-					//console.log(r+" "+g+" "+b);
 					result += "<span class='"+span_class+"' data-position='"+data_position+"' title='"+category+"' style='background-color: "+bg_color+";'>";
 					j++;
 				}
@@ -220,7 +209,6 @@ var textObject = {
 		showDocumentMetaData: function() {
 			var title = document.getElementById("title");
 			var creation_time = document.getElementById("creation_time");
-			//console.log(JSON.stringify(this.document));
 			title.textContent = this.document.title;
 			creation_time.textContent = this.document.creation_time;
 		},
@@ -234,5 +222,22 @@ var textObject = {
 			this.update();
 			this.showDocumentMetaData();
 			this.showAnnotatedText();
+		},
+		
+		getAnnotationsList: function(start, end) {
+			var ann = new Array();
+			for (var i = 0; i < this.annotations.length; i++) {
+				if (this.annotations[i]["start_offset"] <= start && this.annotations[i]["end_offset"] >= start) {
+					ann.push(this.annotations[i]);
+				}
+				else if(end && this.annotations[i]["start_offset"] <= end && this.annotations[i]["end_offset"] >= end) {
+					ann.push(this.annotations[i]);
+				}
+			}
+			return ann;
+		},
+		
+		addAnnotation: function(start, end, cat_id) {
+			console.log(start+" "+end+" "+cat_id);
 		}
 	};
