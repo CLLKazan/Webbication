@@ -7,7 +7,7 @@
 		return mysql_real_escape_string($s);
 	}
 	$ann_id = mysql_fix_strings($_POST['ann_id']);
-	$id = mysql_fix_strings($_POST['id']);
+	$id = mysql_fix_strings($_POST['doc']);
 	
 	$start = mysql_fix_strings($_POST['start']);
 	$end = mysql_fix_strings($_POST['end']);

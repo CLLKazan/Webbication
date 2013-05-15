@@ -61,10 +61,9 @@ function ContextMenu() {
 		this.DOMObj.style.left = event.clientX+"px";
 		var self = this;
 		var hideMenu = function() {
-			if (self.DOMObj) {
+			if (self.DOMObj && self.DOMObj.parentNode) {
 				self.DOMObj.parentNode.removeChild(self.DOMObj);
 			}
-			this.onclick = undefined;
 			document.removeEventListener("click", hideMenu);
 			document.removeEventListener("keydown", hideMenu);
 		};

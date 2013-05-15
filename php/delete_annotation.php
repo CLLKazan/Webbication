@@ -7,7 +7,7 @@
 		return mysql_real_escape_string($s);
 	}
 	
-	$id = mysql_fix_strings($_POST['id']);
+	$id = mysql_fix_strings($_POST['ann_id']);
 	$doc_id = mysql_fix_strings($_POST['doc']);
 	
 	session_start();

@@ -21,6 +21,8 @@
 	position: relative;
 	padding-left: 15px;
 	padding-right: 20px;
+	padding-top: 3px;
+	padding-bottom: 3px;
 	cursor: default;
 }
 

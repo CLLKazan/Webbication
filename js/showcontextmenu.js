@@ -35,12 +35,48 @@ function showContextMenu(event, parent, menu, textobj) {
 					"id": textobj.categories[i]["id"],
 				},
 				"action": function() {
-					textobj.addAnnotation(start, end, this.data["id"]);
+					var params = new Array();
+					params.push({
+						"name": "start",
+						"value": start,
+					});
+					params.push({
+						"name": "end",
+						"value": end,
+					});
+					params.push({
+						"name": "cat",
+						"value": this.data["id"],
+					});
+					textobj.updateAnnotation(params, "add");
 				}
 			});
 		}
 	}
-	if (annotations.length != 0) {
+	if (annotations.length == 1) {
+		items.push({
+			"name": "edit",
+			"data": {
+				"id": annotations[0]["id"],
+			},
+			"action": function() {
+				//TODO
+				console.log(this.data["id"]+" edited");
+			}
+		});
+		items.push({
+			"name": "delete",
+			"data": {
+				"id": annotations[0]["id"],
+			},
+			"action": function() {
+				var params = new Array();
+				params.push({"name": "ann_id", "value": this.data["id"]});
+				textobj.updateAnnotation(params, "delete");
+			}
+		});
+	}
+	else if (annotations.length > 0) {
 		items.push({
 			"name": "annotations",
 			"items": new Array(),
@@ -48,7 +84,7 @@ function showContextMenu(event, parent, menu, textobj) {
 		var last = items.length-1;
 		for (var i = 0; i < annotations.length; i++) {
 			items[last].items.push({
-				"name": annotations[i]["id"], //TODO
+				"name": getMenuItem(annotations[i], textobj),
 				"items": [
 					{"name": "edit",
 					"data": {
@@ -63,9 +99,11 @@ function showContextMenu(event, parent, menu, textobj) {
 						"id": annotations[i]["id"]
 					},
 					"action": function() {
-						//TODO
-						console.log(this.data["id"]+" deleted");
-				}}]
+						var params = new Array();
+						params.push({"name": "ann_id", "value": this.data["id"]});
+						textobj.updateAnnotation(params, "delete");	
+					}
+				}]
 			});		
 		}
 		items.push({
@@ -80,4 +118,15 @@ function showContextMenu(event, parent, menu, textobj) {
 		});
 	}
 	menu.showMenu(event, parent, items);
+}
+
+function getMenuItem(annotation, textobj) {
+	var str = textobj.getTextRange(annotation["start_offset"], annotation["end_offset"]);
+	if (str.length > 15) {
+		str = "["+annotation["category_name"]+"]["+str.length+"] "+str.substr(0, 17)+"...";
+	}
+	else {
+		str = "["+annotation["category_name"]+"]"+str;
+	}
+	return str;
 }

@@ -237,7 +237,74 @@ var textObject = {
 			return ann;
 		},
 		
-		addAnnotation: function(start, end, cat_id) {
-			console.log(start+" "+end+" "+cat_id);
-		}
-	};
+		updateAnnotation: function(params, mode) {
+			var url;
+			if (!mode || mode == "add") {
+				url = "php/add_annotation.php";
+			}
+			else if (mode == "update") {
+				url = "php/update_annotation.php";
+			}
+			else if (mode == "delete") {
+				url = "php/delete_annotation.php";
+			}
+			else {
+				return;
+			}
+			
+ 			var ajaxRequest;
+		    try
+		    {
+		        ajaxRequest = new XMLHttpRequest(); //стандартный способ
+		    }
+		    catch (e)
+		    {
+		        try
+		        {
+		            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP"); //для IE
+		        }
+		        catch (e)
+		        {
+		            try
+		            {
+		                ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP"); //тоже IE
+		            }
+		            catch (e)
+		            {
+		                alert("Ваш браузер не поддерживает AJAX"); //Браузер не поддерживает Ajax
+		                document.location.href = "catalog.php";
+		                return false;
+		            }
+		        }
+		    }
+		    
+		    var p = "doc="+this.id;
+		    for (var i = 0; i < params.length; i++) {
+			    p += "&"+params[i]["name"]+"="+params[i]["value"];
+		    }
+		    		    
+		    ajaxRequest.open("POST", url, false);
+		    ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			ajaxRequest.setRequestHeader("Content-length", p.length);
+			ajaxRequest.setRequestHeader("Connection", "close");
+			
+			ajaxRequest.send(p);
+			
+			if (ajaxRequest.status == 200) {
+				this.update();
+				this.showAnnotatedText();
+			}
+			else console.log("error");
+		},
+		
+		getTextRange: function(start, end) {
+			var length = this.document.text.length;
+			var result = "";
+			for (var i = 0; i < length; i++) {
+				if (i >= start && i < end) {	
+					result += this.document.text.charAt(i);
+				}
+			}
+			return result;
+		},		
+};
