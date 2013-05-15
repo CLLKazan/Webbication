@@ -25,8 +25,7 @@
 		$query = "UPDATE annotation SET category=".$cat.", modification_author=".$author.", modification_time=NOW() WHERE id=".$ann_id.";";
 	}
 	mysql_query($query);
-	//echo mysql_error();
-	$query = "UPDATE document SET modification_author=".$author." modification_time=NOW() WHERE id=".$id.";";
+	$query = "UPDATE document SET modification_author=".$author.", modification_time=NOW() WHERE id=".$id.";";
 	mysql_query($query);
 	mysql_close();
 	echo "OK";

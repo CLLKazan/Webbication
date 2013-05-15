@@ -218,6 +218,12 @@ var textObject = {
 			text.innerHTML = this.annotateText();
 		},
 		
+		showPlainText: function() {
+			var text = document.getElementById("text");
+			text.innerHTML = "";
+			text.textContent = this.document.text;
+		},
+		
 		init: function() {
 			this.update();
 			this.showDocumentMetaData();
@@ -282,6 +288,7 @@ var textObject = {
 		    for (var i = 0; i < params.length; i++) {
 			    p += "&"+params[i]["name"]+"="+params[i]["value"];
 		    }
+		    //console.log(p);
 		    		    
 		    ajaxRequest.open("POST", url, false);
 		    ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -291,6 +298,7 @@ var textObject = {
 			ajaxRequest.send(p);
 			
 			if (ajaxRequest.status == 200) {
+				console.log(ajaxRequest.responseText);
 				this.update();
 				this.showAnnotatedText();
 			}
@@ -306,5 +314,76 @@ var textObject = {
 				}
 			}
 			return result;
-		},		
+		},
+		
+		createSelection: function(start, end)	{	
+			var root = document.getElementById("text").firstChild;
+			var rng;
+			var sel;
+			var browser = navigator.userAgent;
+			if (browser.indexOf("MSIE")+1) {
+				rng = root.createTextRange();
+				rng.collapse(true);
+				rng.moveStart("character", start);
+				rng.moveEnd("character", end);
+				rng.select();
+			}
+			else {
+				rng = document.createRange();
+				rng.setStart(root, start);
+				rng.setEnd(root, end);
+				sel = window.getSelection();
+				sel.removeAllRanges();
+				sel.addRange(rng);
+			}
+		},
+		
+		createCategorySelect: function(cat_id) {
+			var result = "";
+			for (var i = 0; i < this.categories.length; i++) {
+				if (this.categories[i]["id"] == cat_id) {
+					result += "<option selected value='"+this.categories[i]["id"]+"'>"+this.categories[i]["name"]+"</option>";
+				}
+				else {
+					result += "<option value='"+this.categories[i]["id"]+"'>"+this.categories[i]["name"]+"</option>";
+				}
+			}
+			//console.log(result);
+			return result;
+		},
+		
+		saveChanges: function(annotation, button, mode) {
+			var params = new Array();
+			params.push({
+				"name": "ann_id",
+				"value": annotation["id"]
+			});
+			if (mode == "extended") {
+				var selection = new getRangeObject();
+				var selToString = selection.toString();
+				if (!selToString || selToString.length == 0) {
+					console.log("nothing selected");
+					return;
+				}
+				var start = selection.startOffset;
+				var end = selection.endOffset;
+				params.push({
+					"name": "start",
+					"value": start,
+				});
+				params.push({
+					"name": "end",
+					"value": end,
+				});
+			}
+			var select = button.parentNode.getElementsByTagName("select");
+			for (var i = 0; i < select.length; i++) {
+				params.push({
+					"name": select[i].getAttribute("data-param"),
+					"value": select[i].options[select[i].selectedIndex].value
+				});
+			}
+			//console.log(params);
+			this.updateAnnotation(params, "update");
+		}	
 };

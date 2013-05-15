@@ -19,6 +19,7 @@
 		<script src="js/palette.js"></script>	
 		<script src="js/text_range.js"></script>
 		<script src="js/showcontextmenu.js"></script>
+		<script src="js/showeditmode.js"></script>
 		
 		<!--Context-menu-->
 		<link rel="stylesheet" type="text/css" href="js/context-menu/context-menu.css">
@@ -60,6 +61,14 @@
 						<a id="palette_button">Палитра</a>
 						
 						<div id="palette">
+						</div>
+						
+						<div id="edit_options" style="display: none;">
+							<form id="edit_form">
+								<select class="categories_list" data-param="cat">
+								</select>
+								<input id="save_button" type="submit" value="Сохранить">
+							</form>
 						</div>
 					</div>
 					

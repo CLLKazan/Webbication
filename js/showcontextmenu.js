@@ -57,11 +57,11 @@ function showContextMenu(event, parent, menu, textobj) {
 		items.push({
 			"name": "edit",
 			"data": {
-				"id": annotations[0]["id"],
+				"ann": annotations[0],
 			},
 			"action": function() {
-				//TODO
-				console.log(this.data["id"]+" edited");
+				showEditMode(this.data["ann"], textobj);
+				//console.log(this.data["id"]+" edited");
 			}
 		});
 		items.push({
@@ -88,11 +88,11 @@ function showContextMenu(event, parent, menu, textobj) {
 				"items": [
 					{"name": "edit",
 					"data": {
-						"id": annotations[i]["id"]
+						"ann": annotations[i]
 					},
 					"action": function() {
-						//TODO
-						console.log(this.data["id"]+" edited");
+						showEditMode(this.data["ann"], textobj);
+						//console.log(this.data["id"]+" edited");
 					}},
 					{"name": "delete",
 					"data": {
