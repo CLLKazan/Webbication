@@ -52,6 +52,9 @@ var textObject = {
 		
 		annotateText: function() {
 			var points = new Array();
+			if (!this.annotations) {
+				this.annotations = new Array();
+			}
 			for (var i = 0; i < this.annotations.length; i++) {
 				points.push({
 					"position": parseInt(this.annotations[i]["start_offset"]), 
@@ -155,6 +158,7 @@ var textObject = {
 			var end = this.document.text.length;
 			var classes = ["plain_text", "highlighted_span", "white_text"];
 			var result = "<span class='"+classes[0]+"' data-position='"+0+"'>";
+			var offset = 0;
 			
 			for (var i = 0; i < end; i++) {
 				while (points[j] && i == points[j]["position"]) {
@@ -201,6 +205,9 @@ var textObject = {
 					result += "<span class='"+span_class+"' data-position='"+data_position+"' title='"+category+"' style='background-color: "+bg_color+";'>";
 					j++;
 				}
+				if (this.document.text.charAt(i) != "/n/r") {
+					offset++;
+				}
 				result += this.document.text.charAt(i);
 			}
 			return result;
@@ -236,7 +243,13 @@ var textObject = {
 				if (this.annotations[i]["start_offset"] <= start && this.annotations[i]["end_offset"] >= start) {
 					ann.push(this.annotations[i]);
 				}
-				else if(end && this.annotations[i]["start_offset"] <= end && this.annotations[i]["end_offset"] >= end) {
+				else if(this.annotations[i]["start_offset"] <= end && this.annotations[i]["end_offset"] >= end) {
+					ann.push(this.annotations[i]);
+				}
+				else if(this.annotations[i]["start_offset"] >= start && this.annotations[i]["start_offset"] <= end) {
+					ann.push(this.annotations[i]);
+				}
+				else if(this.annotations[i]["end_offset"] >= start && this.annotations[i]["end_offset"] <= end) {
 					ann.push(this.annotations[i]);
 				}
 			}
@@ -288,7 +301,7 @@ var textObject = {
 		    for (var i = 0; i < params.length; i++) {
 			    p += "&"+params[i]["name"]+"="+params[i]["value"];
 		    }
-		    //console.log(p);
+		    console.log(p);
 		    		    
 		    ajaxRequest.open("POST", url, false);
 		    ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -298,7 +311,7 @@ var textObject = {
 			ajaxRequest.send(p);
 			
 			if (ajaxRequest.status == 200) {
-				console.log(ajaxRequest.responseText);
+				//console.log(ajaxRequest.responseText);
 				this.update();
 				this.showAnnotatedText();
 			}

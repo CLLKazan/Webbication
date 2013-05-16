@@ -24,7 +24,7 @@ function showContextMenu(event, parent, menu, textobj) {
 		end = parseInt(selection.endContainer.parentNode.getAttribute("data-position"))+selection.endOffset;
 		annotations = textobj.getAnnotationsList(start, end);
 		items.push({
-			"name": "add annotations",
+			"name": "add annotation",
 			"items": new Array()
 		});
 		var last = items.length-1;
@@ -82,6 +82,16 @@ function showContextMenu(event, parent, menu, textobj) {
 			"items": new Array(),
 		});
 		var last = items.length-1;
+		var getMenuItem = function(annotation, text) {
+			var str = text.getTextRange(annotation["start_offset"], annotation["end_offset"]);
+			if (str.length > 15) {
+				str = "["+annotation["category_name"]+"]["+str.length+"] "+str.substr(0, 17)+"...";
+			}
+			else {
+				str = "["+annotation["category_name"]+"]"+str;
+			}
+			return str;
+		};
 		for (var i = 0; i < annotations.length; i++) {
 			items[last].items.push({
 				"name": getMenuItem(annotations[i], textobj),
@@ -112,21 +122,10 @@ function showContextMenu(event, parent, menu, textobj) {
 				"annotations": annotations
 			},
 			"action": function() {
-				//TODO
-				console.log(this.data["annotations"]);
+				showComplexAnnotation(this.data["annotations"], textobj);
+				//console.log(this.data["annotations"]);
 			}
 		});
 	}
 	menu.showMenu(event, parent, items);
-}
-
-function getMenuItem(annotation, textobj) {
-	var str = textobj.getTextRange(annotation["start_offset"], annotation["end_offset"]);
-	if (str.length > 15) {
-		str = "["+annotation["category_name"]+"]["+str.length+"] "+str.substr(0, 17)+"...";
-	}
-	else {
-		str = "["+annotation["category_name"]+"]"+str;
-	}
-	return str;
 }

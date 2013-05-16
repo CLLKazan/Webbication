@@ -65,10 +65,10 @@ function ContextMenu() {
 				self.DOMObj.parentNode.removeChild(self.DOMObj);
 			}
 			document.removeEventListener("click", hideMenu);
-			document.removeEventListener("keydown", hideMenu);
+			//document.removeEventListener("keydown", hideMenu);
 		};
 		document.addEventListener("click", hideMenu);
-		document.addEventListener("keydown", hideMenu);
+		//document.addEventListener("keydown", hideMenu);
 	};
 	
 	this.initMenu = function(parent) {

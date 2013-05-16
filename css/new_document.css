@@ -84,6 +84,9 @@ body {
 	height: 40px;
 	background: url('img/save_button.png');
 	text-indent: -9000px;
+	border: none;
+	position: absolute;
+	top: 2px;
 }
 
 #save_button:hover {
@@ -176,6 +179,7 @@ textarea#uid {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-o-border-radius: 5px;
+	overflow-x: hidden;
 }
 
 #project_name {

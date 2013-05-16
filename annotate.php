@@ -20,6 +20,7 @@
 		<script src="js/text_range.js"></script>
 		<script src="js/showcontextmenu.js"></script>
 		<script src="js/showeditmode.js"></script>
+		<script src="js/showcomplexannotation.js"></script>
 		
 		<!--Context-menu-->
 		<link rel="stylesheet" type="text/css" href="js/context-menu/context-menu.css">
@@ -37,6 +38,15 @@
 				var context_menu = new ContextMenu();
 				document.getElementById("text").oncontextmenu = function(event) {
 					showContextMenu(event, this, context_menu, textObject);
+				};
+				document.getElementById("window").onclick = function() {
+					event.stopPropagation();
+				};
+				document.getElementById("close_window_button").onclick = function(event) {
+					document.getElementById("wall").style.display = "none";
+				};
+				document.getElementById("wall").onclick = function() {
+					this.style.display = "none";
 				};
 			};
 		</script>
@@ -86,6 +96,20 @@
 			
 			<div id="footer">
 				<p id="project_name">KFU ITIS. 2013 (c)</p>
+			</div>
+			
+			<div id="wall" style="display: none;">
+				<div id="window">
+					<div id="window_header">
+						<a id="close_window_button">
+							<img src='css/img/exit_button.png'>
+						</a>
+					</div>
+					<div id="table_div">
+						<table id="complex_annotation">
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

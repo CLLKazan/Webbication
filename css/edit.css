@@ -75,7 +75,7 @@ div#tools {
 	left: 760px;
 }
 
-a#save_button {
+#save_button {
 	display: block;
 	width: 40px;
 	height: 40px;
@@ -83,7 +83,7 @@ a#save_button {
 	text-indent: -9000px;
 }
 
-a#save_button:hover {
+#save_button:hover {
 	background-position-y: 40px;
 }
 
