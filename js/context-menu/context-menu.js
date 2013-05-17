@@ -57,18 +57,26 @@ function ContextMenu() {
 		}
 
 		this.initMenu(parent);
-		this.DOMObj.style.top = (event.clientY+document.body.scrollTop)+"px";
+		var scrolled;
+		if (document.documentElement.scrollTop == 0) {
+			scrolled = document.body.scrollTop;
+		}
+		else {
+			scrolled = document.documentElement.scrollTop;
+		}
+		this.DOMObj.onmousedown = function(event) {
+			event.stopPropagation();
+		};
+		this.DOMObj.style.top = (event.clientY+scrolled)+"px";
 		this.DOMObj.style.left = event.clientX+"px";
 		var self = this;
 		var hideMenu = function() {
 			if (self.DOMObj && self.DOMObj.parentNode) {
 				self.DOMObj.parentNode.removeChild(self.DOMObj);
 			}
-			document.removeEventListener("click", hideMenu);
-			//document.removeEventListener("keydown", hideMenu);
+			document.removeEventListener("mousedown", hideMenu);
 		};
-		document.addEventListener("click", hideMenu);
-		//document.addEventListener("keydown", hideMenu);
+		document.addEventListener("mousedown", hideMenu);
 	};
 	
 	this.initMenu = function(parent) {

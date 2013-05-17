@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/textMain.css">
 		<link rel="stylesheet" type="text/css" href="css/catalog.css">
 		<title>Catalogue</title>

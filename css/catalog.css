@@ -119,7 +119,6 @@ body {
 #catalog {
 	margin-top: 15px;
 	width: 600px;
-	border-spacing: 0px;
 }
 
 td.document_title {
@@ -175,13 +174,20 @@ p.time {
 }
 
 td.edit_button {
-	position: relative;
-	top:15px;
 	width: 20px;
 	border-bottom: 1px solid rgba(224,191,167,0.5);
 	-moz-border-bottom: 1px solid rgba(224,191,167,0.5);
 	-webkit-border-bottom: 1px solid rgba(224,191,167,0.5);
 	-o-border-bottom: 1px solid rgba(224,191,167,0.5);
+}
+
+td.edit_button a {
+	position: relative;
+}
+
+td.edit_button a img {
+	position: absolute;
+	top: 15px;
 }
 
 #pagination {

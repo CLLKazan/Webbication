@@ -1,14 +1,15 @@
-function showContextMenu(event, parent, menu, textobj) {
+function showContextMenu(event, parent, textobj, container) {
 	var items = new Array();
 	var selection = new getRangeObject();
 	var selToString = selection.toString();
 	var annotations;
 	var start, end;
-	if (!selToString || selToString.length == 0) {
-		var container = this;
-		start = parseInt(container.parentNode.getAttribute("data-position"));
+	if (!selection.startContainer || !selToString || selToString.length == 0) {
+		//console.log(container);
+		start = parseInt(container.getAttribute("data-position"));
 		end = start+container.textContent.length;
-		annotations = textobj.getAnnotationsList(start, end); 
+		//console.log(start+" "+end);
+		annotations = textobj.getAnnotationsList(start, end, 0); 
 		if (annotations.length == 0) {
 			items.push({
 				"name": "no options",
@@ -16,13 +17,15 @@ function showContextMenu(event, parent, menu, textobj) {
 					console.log("no options");
 				},
 			});
+			textobj.context_menu.showMenu(event, parent, items);
 			return;
 		}
 	}
 	else {
+		console.log(selection);
 		start = parseInt(selection.startContainer.parentNode.getAttribute("data-position"))+selection.startOffset;
 		end = parseInt(selection.endContainer.parentNode.getAttribute("data-position"))+selection.endOffset;
-		annotations = textobj.getAnnotationsList(start, end);
+		annotations = textobj.getAnnotationsList(start, end, 1);
 		items.push({
 			"name": "add annotation",
 			"items": new Array()
@@ -127,5 +130,5 @@ function showContextMenu(event, parent, menu, textobj) {
 			}
 		});
 	}
-	menu.showMenu(event, parent, items);
+	textobj.context_menu.showMenu(event, parent, items);
 }

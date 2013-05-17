@@ -3,6 +3,7 @@ var textObject = {
 		document: new Object(),
 		annotations: new Object(),
 		categories: new Object(),
+		context_menu: new ContextMenu(),
 		
 		update: function() {
 			this.getPostData("php/get_document.php", "id="+this.id, "document");
@@ -223,6 +224,14 @@ var textObject = {
 		showAnnotatedText: function() {
 			var text = document.getElementById("text");
 			text.innerHTML = this.annotateText();
+			var spans = text.getElementsByTagName("span");
+			var self = this;
+			for (var i = 0; i < spans.length; i++) {
+				spans[i].oncontextmenu = function(event) {
+					showContextMenu(event, text, self, this);
+					event.stopPropagation();
+				};
+			}
 		},
 		
 		showPlainText: function() {
@@ -237,22 +246,31 @@ var textObject = {
 			this.showAnnotatedText();
 		},
 		
-		getAnnotationsList: function(start, end) {
+		getAnnotationsList: function(start, end, mode) {
+			//console.log(start, end);
 			var ann = new Array();
 			for (var i = 0; i < this.annotations.length; i++) {
-				if (this.annotations[i]["start_offset"] <= start && this.annotations[i]["end_offset"] >= start) {
-					ann.push(this.annotations[i]);
+				if (mode != 0) {
+					if (this.annotations[i]["start_offset"] <= start && this.annotations[i]["end_offset"] >= start) {
+						ann.push(this.annotations[i]);
+					}
+					else if(this.annotations[i]["start_offset"] <= end && this.annotations[i]["end_offset"] >= end) {
+						ann.push(this.annotations[i]);
+					}
+					else if(this.annotations[i]["start_offset"] >= start && this.annotations[i]["start_offset"] <= end) {
+						ann.push(this.annotations[i]);
+					}
+					else if(this.annotations[i]["end_offset"] >= start && this.annotations[i]["end_offset"] <= end) {
+						ann.push(this.annotations[i]);
+					}
 				}
-				else if(this.annotations[i]["start_offset"] <= end && this.annotations[i]["end_offset"] >= end) {
-					ann.push(this.annotations[i]);
-				}
-				else if(this.annotations[i]["start_offset"] >= start && this.annotations[i]["start_offset"] <= end) {
-					ann.push(this.annotations[i]);
-				}
-				else if(this.annotations[i]["end_offset"] >= start && this.annotations[i]["end_offset"] <= end) {
-					ann.push(this.annotations[i]);
+				else {
+					if (this.annotations[i]["start_offset"] <= start && this.annotations[i]["end_offset"] >= end) {
+						ann.push(this.annotations[i]);
+					}
 				}
 			}
+			//console.log(ann);
 			return ann;
 		},
 		
@@ -301,7 +319,7 @@ var textObject = {
 		    for (var i = 0; i < params.length; i++) {
 			    p += "&"+params[i]["name"]+"="+params[i]["value"];
 		    }
-		    console.log(p);
+		    //console.log(p);
 		    		    
 		    ajaxRequest.open("POST", url, false);
 		    ajaxRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

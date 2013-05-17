@@ -1,5 +1,4 @@
 <?php
-	header("Location: ../catalog.php");
 	function mysql_fix_strings($s)
 	{
 		$s = strip_tags($s);
@@ -10,6 +9,7 @@
 	$id = mysql_fix_strings($_POST['id']);
 	
 	$text = mysql_fix_strings($_POST["text"]); //очищаем от html тегов текст
+	$title = mysql_fix_strings($_POST["title"]); //и заголовок
 
 	session_start();
 	$author_id = $_SESSION['user'];	

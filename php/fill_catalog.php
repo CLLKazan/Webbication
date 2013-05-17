@@ -62,7 +62,7 @@
 		}
 		else
 		{
-			echo "<td class='edit_button'><img src='css/img/not_edit_button.png'></td>";
+			echo "<td class='edit_button'><a><img src='css/img/not_edit_button.png'></a></td>";
 		}
 		
 		echo "</tr>";
